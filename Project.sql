@@ -1,3 +1,10 @@
+/*
+	Kyle Brost
+	Cameron Gera
+	CIS4301
+	Project
+*/
+
 -- create tables --
 
 # user table
@@ -12,9 +19,9 @@ CREATE TABLE User (
 );
 
 # order table
-CREATE TABLE Order (
+CREATE TABLE AnOrder (
 	id CHAR(20),
-	date CHAR(10),
+	date_bought CHAR(10),
 	paid BOOLEAN,
 	quantity INT,
 	PRIMARY KEY (id)
