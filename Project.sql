@@ -1,18 +1,33 @@
+/*
+	Kyle Brost
+	Cameron Gera
+	CIS4301
+	Project
+*/
+
 -- create tables --
 
-# user table
-CREATE TABLE User (
-	id CHAR(20),
-	address CHAR(20),
-	name CHAR(20),
-	password CHAR(20),
-	email CHAR(20),
-	is_staff BOOLEAN,
-	PRIMARY KEY (id)
-);
+/*
+	+-------------+
+	| 	TABLES		|		>>	* = PRIMARY KEY
+	+-------------+
+	|		AnOrder		|		->	id*, date_bought, paid, quantity
+	|		Product		|		->	id*, name, price, stock, description, active
+	|		Supplier	|		->	id*, name
+	|		User			|		->	id*, address, name, password, email, is_Staff
+	+-------------+
+
+	+-------------+
+	|  RELATIONS	|
+	+-------------+
+	|		Contains	|		->	product_id, order_id, quantity
+	|		Orders		|		->	user_id, order_id
+	|		Supplies	|		->	product_id, supplier_id
+	+-------------+
+*/
 
 # order table
-CREATE TABLE Order (
+CREATE TABLE AnOrder (
 	id CHAR(20),
 	date_bought CHAR(10),
 	paid BOOLEAN,
@@ -38,6 +53,24 @@ CREATE TABLE Supplier (
 	PRIMARY KEY (id)
 );
 
+# user table
+CREATE TABLE User (
+	id CHAR(20),
+	address CHAR(20),
+	name CHAR(20),
+	password CHAR(20),
+	email CHAR(20),
+	is_staff BOOLEAN,
+	PRIMARY KEY (id)
+);
+
+# relation between Order and Product with additional value 'quantity'
+CREATE TABLE Contains (
+	product_id CHAR(20),
+	order_id CHAR(20),
+	quantity INT
+);
+
 # relation between User and Order
 CREATE TABLE Orders (
 	user_id CHAR(20),
@@ -50,11 +83,18 @@ CREATE TABLE Supplies (
 	supplier_id CHAR(20)
 );
 
-# relation between Order and Product with additional value 'quantity'
-CREATE TABLE Contains (
-	product_id CHAR(20),
-	order_id CHAR(20),
-	quantity INT
-);
-
 -- add initial data --
+
+INSERT INTO AnOrder VALUES ();
+
+INSERT INTO Product VALUES ();
+
+INSERT INTO Supplier VALUES ();
+
+INSERT INTO User VALUES ();
+
+INSERT INTO Contains VALUES ();
+
+INSERT INTO Orders VALUES ();
+
+INSERT INTO Supplies VALUES ();
