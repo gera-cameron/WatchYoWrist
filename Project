@@ -1,0 +1,41 @@
+# create tables
+
+CREATE TABLE User {
+	id			CHAR(20),
+	address		CHAR(20),
+	name		CHAR(20),
+	password	CHAR(20),
+	email		VARCHAR(20),
+	is_staff	BOOLEAN,
+	PRIMARY KEY (id)
+};
+
+CREATE TABLE Order {
+	id			CHAR(20),
+	date		CHAR(10),
+	paid		BOOLEAN,
+	quantity	INT,
+	PRIMARY KEY (id)
+};
+
+CREATE TABLE Product {
+	id			CHAR(20),
+	name		CHAR(20),
+	price		REAL,
+	stock		INT,
+	description	CHAR(100),
+	active		BOOLEAN,
+	PRIMARY KEY (id)
+};
+
+CREATE TABLE Supplier {
+	id			CHAR(20),
+	name		CHAR(20),
+	PRIMARY KEY (id)
+};
+
+CREATE TABLE Orders {
+	
+};
+
+# add initial data
