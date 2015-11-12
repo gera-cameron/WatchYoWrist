@@ -14,7 +14,7 @@ CREATE TABLE User (
 # order table
 CREATE TABLE Order (
 	id CHAR(20),
-	date CHAR(10),
+	date_bought CHAR(10),
 	paid BOOLEAN,
 	quantity INT,
 	PRIMARY KEY (id)
