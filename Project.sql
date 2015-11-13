@@ -87,29 +87,29 @@ CREATE TABLE Supplies (
 -- add initial data --
 
 # contains orders placed
-INSERT INTO AnOrder VALUES ('orderID1', '11/13/2015', TRUE, 1);
-INSERT INTO AnOrder VALUES ('orderID2', '11/13/2015', TRUE, 1);
-INSERT INTO AnOrder VALUES ('orderID3', '11/13/2015', TRUE, 1);
-INSERT INTO AnOrder VALUES ('orderID4', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('O001', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('O002', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('O003', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('O004', '11/13/2015', TRUE, 1);
 
 # contains all products offered
-INSERT INTO Product VALUES ('productID1', 'Basic 1', 5.00, 100, '1 month basic', TRUE);
-INSERT INTO Product VALUES ('productID2', 'Basic 2', 14.00, 100, '3 month basic', TRUE);
-INSERT INTO Product VALUES ('productID3', 'Basic 3', 28.00, 100, '6 month basic', TRUE);
-INSERT INTO Product VALUES ('productID4', 'Basic 4', 55.00, 100, '12 month basic', TRUE);
-INSERT INTO Product VALUES ('productID5', 'Silver 1', 10.00, 50, '1 month silver', TRUE);
-INSERT INTO Product VALUES ('productID6', 'Silver 2', 28.00, 50, '3 month silver', TRUE);
-INSERT INTO Product VALUES ('productID7', 'Silver 3', 50.00, 50, '6 month silver', TRUE);
-INSERT INTO Product VALUES ('productID8', 'Silver 4', 99.00, 50, '12 month silver', TRUE);
-INSERT INTO Product VALUES ('productID9', 'Gold 1', 20.00, 25, '1 month gold', TRUE);
-INSERT INTO Product VALUES ('productID10', 'Gold 2', 58.00, 25, '3 month gold', TRUE);
-INSERT INTO Product VALUES ('productID11', 'Gold 3', 110.00, 25, '6 month gold', TRUE);
-INSERT INTO Product VALUES ('productID12', 'Gold 4', 210.00, 25, '12 month gold', TRUE);
+INSERT INTO Product VALUES ('P001', 'Basic 1', 5.00, 100, '1 month basic', TRUE);
+INSERT INTO Product VALUES ('P002', 'Basic 2', 14.00, 100, '3 month basic', TRUE);
+INSERT INTO Product VALUES ('P003', 'Basic 3', 28.00, 100, '6 month basic', TRUE);
+INSERT INTO Product VALUES ('P004', 'Basic 4', 55.00, 100, '12 month basic', TRUE);
+INSERT INTO Product VALUES ('P005', 'Silver 1', 10.00, 50, '1 month silver', TRUE);
+INSERT INTO Product VALUES ('P006', 'Silver 2', 28.00, 50, '3 month silver', TRUE);
+INSERT INTO Product VALUES ('P007', 'Silver 3', 50.00, 50, '6 month silver', TRUE);
+INSERT INTO Product VALUES ('P008', 'Silver 4', 99.00, 50, '12 month silver', TRUE);
+INSERT INTO Product VALUES ('P009', 'Gold 1', 20.00, 25, '1 month gold', TRUE);
+INSERT INTO Product VALUES ('P010', 'Gold 2', 58.00, 25, '3 month gold', TRUE);
+INSERT INTO Product VALUES ('P011', 'Gold 3', 110.00, 25, '6 month gold', TRUE);
+INSERT INTO Product VALUES ('P012', 'Gold 4', 210.00, 25, '12 month gold', TRUE);
 
 # contains all suppliers
-INSERT INTO Supplier VALUES ('supplierID1', 'Apple');
-INSERT INTO Supplier VALUES ('supplierID2', 'Samsung');
-INSERT INTO Supplier VALUES ('supplierID3', 'Fossil');
+INSERT INTO Supplier VALUES ('S001', 'Apple');
+INSERT INTO Supplier VALUES ('S002', 'Samsung');
+INSERT INTO Supplier VALUES ('S003', 'Fossil');
 
 # contains all user information
 INSERT INTO User VALUES ('broskj', '123 Main St', 'Kyle Brost', 'mypassword', 'broskj@email.com', TRUE);
@@ -121,27 +121,27 @@ INSERT INTO User VALUES ('teddyr', '953 9th Rd', 'Teddy Roosevelt', 'teddyteddy2
 INSERT INTO User VALUES ('bclinton', '815 7th St', 'Bill Clinton', 'lewinskylessthan3', 'bclinton@email.com', FALSE);
 
 # relationship between orders and products -> what orders contain what products and a quantity
-INSERT INTO Contains VALUES ('orderID1', 'productID4', 1);
-INSERT INTO Contains VALUES ('orderID2', 'productID12', 1);
-INSERT INTO Contains VALUES ('orderID3', 'productID1', 1);
-INSERT INTO Contains VALUES ('orderID4', 'productID6', 1);
+INSERT INTO Contains VALUES ('O001', 'P004', 1);
+INSERT INTO Contains VALUES ('O002', 'P0012', 1);
+INSERT INTO Contains VALUES ('O003', 'P001', 1);
+INSERT INTO Contains VALUES ('O004', 'P006', 1);
 
 # relationship between users and orders -> what users makes which order
-INSERT INTO Orders VALUES ('doejohn', 'orderID1');
-INSERT INTO Orders VALUES ('doejane', 'orderID2');
-INSERT INTO Orders VALUES ('gwash', 'orderID3');
-INSERT INTO Orders VALUES ('teddyr', 'orderID4');
+INSERT INTO Orders VALUES ('doejohn', 'O001');
+INSERT INTO Orders VALUES ('doejane', 'O002');
+INSERT INTO Orders VALUES ('gwash', 'O003');
+INSERT INTO Orders VALUES ('teddyr', 'O004');
 
 # relationship between product and supplier -> what product comes from which supplier
-INSERT INTO Supplies VALUES ('productID1', 'supplierID1');
-INSERT INTO Supplies VALUES ('productID2', 'supplierID1');
-INSERT INTO Supplies VALUES ('productID3', 'supplierID1');
-INSERT INTO Supplies VALUES ('productID4', 'supplierID1');
-INSERT INTO Supplies VALUES ('productID5', 'supplierID2');
-INSERT INTO Supplies VALUES ('productID6', 'supplierID2');
-INSERT INTO Supplies VALUES ('productID7', 'supplierID2');
-INSERT INTO Supplies VALUES ('productID8', 'supplierID2');
-INSERT INTO Supplies VALUES ('productID9', 'supplierID3');
-INSERT INTO Supplies VALUES ('productID10', 'supplierID3');
-INSERT INTO Supplies VALUES ('productID11', 'supplierID3');
-INSERT INTO Supplies VALUES ('productID12', 'supplierID3');
+INSERT INTO Supplies VALUES ('P001', 'S001');
+INSERT INTO Supplies VALUES ('P002', 'S001');
+INSERT INTO Supplies VALUES ('P003', 'S001');
+INSERT INTO Supplies VALUES ('P004', 'S001');
+INSERT INTO Supplies VALUES ('P005', 'S002');
+INSERT INTO Supplies VALUES ('P006', 'S002');
+INSERT INTO Supplies VALUES ('P007', 'S002');
+INSERT INTO Supplies VALUES ('P008', 'S002');
+INSERT INTO Supplies VALUES ('P009', 'S003');
+INSERT INTO Supplies VALUES ('P010', 'S003');
+INSERT INTO Supplies VALUES ('P011', 'S003');
+INSERT INTO Supplies VALUES ('P012', 'S003');
