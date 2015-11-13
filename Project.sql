@@ -86,31 +86,31 @@ CREATE TABLE Supplies (
 
 -- add initial data --
 
-INSERT INTO AnOrder VALUES ('orderID1', '11/13/2015', YES, 1);
-INSERT INTO AnOrder VALUES ('orderID2', '11/13/2015', YES, 1);
-INSERT INTO AnOrder VALUES ('orderID3', '11/13/2015', YES, 1);
-INSERT INTO AnOrder VALUES ('orderID4', '11/13/2015', YES, 1);
-INSERT INTO AnOrder VALUES ('orderID5', '11/13/2015', YES, 1);
+INSERT INTO AnOrder VALUES ('orderID1', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('orderID2', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('orderID3', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('orderID4', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES ('orderID5', '11/13/2015', TRUE, 1);
 
-INSERT INTO Product VALUES ('productID1', 'productName1', 5.00, 100, '1 month subscription', YES);
-INSERT INTO Product VALUES ('productID2', 'productName2', 9.00, 100, '2 month subscription', YES);
-INSERT INTO Product VALUES ('productID3', 'productName3', 14.00, 100, '3 month subscription', YES);
-INSERT INTO Product VALUES ('productID4', 'productName4', 28.00, 100, '6 month subscription', YES);
-INSERT INTO Product VALUES ('productID5', 'productName5', 55.00, 100, '12 month subscription', YES);
-INSERT INTO Product VALUES ('productID6', 'productName6', 20.00, 100, 'Silver upcharge', YES);
-INSERT INTO Product VALUES ('productID7', 'productName7', 25.00, 100, 'Gold upcharge', YES);
+INSERT INTO Product VALUES ('productID1', 'productName1', 5.00, 100, '1 month subscription', TRUE);
+INSERT INTO Product VALUES ('productID2', 'productName2', 9.00, 100, '2 month subscription', TRUE);
+INSERT INTO Product VALUES ('productID3', 'productName3', 14.00, 100, '3 month subscription', TRUE);
+INSERT INTO Product VALUES ('productID4', 'productName4', 28.00, 100, '6 month subscription', TRUE);
+INSERT INTO Product VALUES ('productID5', 'productName5', 55.00, 100, '12 month subscription', TRUE);
+INSERT INTO Product VALUES ('productID6', 'productName6', 20.00, 100, 'Silver upcharge', TRUE);
+INSERT INTO Product VALUES ('productID7', 'productName7', 25.00, 100, 'Gold upcharge', TRUE);
 
 INSERT INTO Supplier VALUES ('supplierID1', 'Apple');
 INSERT INTO Supplier VALUES ('supplierID2', 'Samsung');
 INSERT INTO Supplier VALUES ('supplierID3', 'Fossil');
 
 INSERT INTO User VALUES ('broskj', '123 Main St', 'Kyle Brost', 'mypassword', 'broskj@email.com', TRUE);
-INSERT INTO User VALUES ('gerac', '456 1st Ave', 'Cameron Gera', 'hispassword', 'gera.cameron@gmail.com', YES);
-INSERT INTO User VALUES ('userID3', '789 2nd Ln', 'User 3''s name', 'user 3''s password', 'user3@email.com', NO);
-INSERT INTO User VALUES ('userID4', '234 3rd Ave', 'User 4''s name', 'user 4''s password', 'user4@email.com', NO);
-INSERT INTO User VALUES ('userID5', '567 4th St', 'User 5''s name', 'user 5''s password', 'user5@email.com', NO);
-INSERT INTO User VALUES ('userID6', '953 9th Rd', 'User 6''s name', 'user 6''s password', 'user6@email.com', NO);
-INSERT INTO User VALUES ('userID7', '815 7th St', 'User 7''s name', 'user 7''s password', 'user7@email.com', NO);
+INSERT INTO User VALUES ('gerac', '456 1st Ave', 'Cameron Gera', 'hispassword', 'gera.cameron@gmail.com', TRUE);
+INSERT INTO User VALUES ('userID3', '789 2nd Ln', 'User 3''s name', 'user 3''s password', 'user3@email.com', FALSE);
+INSERT INTO User VALUES ('userID4', '234 3rd Ave', 'User 4''s name', 'user 4''s password', 'user4@email.com', FALSE);
+INSERT INTO User VALUES ('userID5', '567 4th St', 'User 5''s name', 'user 5''s password', 'user5@email.com', FALSE);
+INSERT INTO User VALUES ('userID6', '953 9th Rd', 'User 6''s name', 'user 6''s password', 'user6@email.com', FALSE);
+INSERT INTO User VALUES ('userID7', '815 7th St', 'User 7''s name', 'user 7''s password', 'user7@email.com', FALSE);
 
 INSERT INTO Contains VALUES ('productID1', 'orderID1', 12);
 INSERT INTO Contains VALUES ('productID1', 'orderID1', 12);
