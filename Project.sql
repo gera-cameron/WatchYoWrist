@@ -3,6 +3,7 @@
 	Cameron Gera
 	CIS4301
 	Project
+	We are working in MySQL for this project.
 */
 
 -- create tables --
@@ -104,7 +105,7 @@ INSERT INTO Supplier VALUES ('supplierID2', 'Supplier B');
 INSERT INTO Supplier VALUES ('supplierID3', 'Supplier C');
 
 INSERT INTO User VALUES ('broskj', '123 Main St', 'Kyle Brost', 'mypassword', 'broskj@email.com', YES);
-INSERT INTO User VALUES ('gerac', '456 1st Ave', 'Cameron Gera', 'hispassword', 'gerac@email.com', YES);
+INSERT INTO User VALUES ('gerac', '456 1st Ave', 'Cameron Gera', 'hispassword', 'gera.cameron@gmail.com', YES);
 INSERT INTO User VALUES ('userID3', '789 2nd Ln', 'User 3''s name', 'user 3''s password', 'user3@email.com', NO);
 INSERT INTO User VALUES ('userID4', '234 3rd Ave', 'User 4''s name', 'user 4''s password', 'user4@email.com', NO);
 INSERT INTO User VALUES ('userID5', '567 4th St', 'User 5''s name', 'user 5''s password', 'user5@email.com', NO);
