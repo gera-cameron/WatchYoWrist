@@ -3,7 +3,7 @@
 	Cameron Gera
 	CIS4301
 	Project
-	We are working in MySQL for this project.
+	We are working in MySQL for this project
 */
 
 -- create tables --
@@ -107,9 +107,9 @@ INSERT INTO Product VALUES ('productID11', 'Gold 3', 110.00, 25, '6 month gold',
 INSERT INTO Product VALUES ('productID12', 'Gold 4', 210.00, 25, '12 month gold', TRUE);
 
 # contains all suppliers
-INSERT INTO Supplier VALUES ('supplierID1', 'Supplier A');
-INSERT INTO Supplier VALUES ('supplierID2', 'Supplier B');
-INSERT INTO Supplier VALUES ('supplierID3', 'Supplier C');
+INSERT INTO Supplier VALUES ('supplierID1', 'Apple');
+INSERT INTO Supplier VALUES ('supplierID2', 'Samsung');
+INSERT INTO Supplier VALUES ('supplierID3', 'Fossil');
 
 # contains all user information
 INSERT INTO User VALUES ('broskj', '123 Main St', 'Kyle Brost', 'mypassword', 'broskj@email.com', TRUE);
