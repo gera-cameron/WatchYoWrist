@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>New Sails App</title>
+    <title>Watch-Yo-Wrist</title>
 
     <!-- Viewport mobile tag for sensible mobile support -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 
-    <!--  
+    <!--
         Stylesheets and Preprocessors
         ==============================
 
@@ -29,12 +29,15 @@
     -->
 
     <!--STYLES-->
+    <link rel="stylesheet" href="/styles/importer.css">
     <!--STYLES END-->
   </head>
 
   <body>
     <%- body %>
-
+      Here we will be creating a store that offers a monthly watch membership. Users will select the
+      styles of watch and the watch they own. Then we will create a queue of watch bands they will recieve
+      each. 
 
 
     <!--
@@ -59,6 +62,7 @@
     -->
 
     <!--TEMPLATES-->
+    
     <!--TEMPLATES END-->
 
 
@@ -86,6 +90,7 @@
     -->
 
     <!--SCRIPTS-->
+    <script src="/js/dependencies/sails.io.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>

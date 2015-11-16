@@ -6,9 +6,10 @@
 */
 
 module.exports = {
-
+  tableName: 'user',
+  connection: 'mysql',
+  migrate: 'safe',
   attributes: {
 
   }
 };
-
