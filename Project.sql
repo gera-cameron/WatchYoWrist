@@ -84,6 +84,23 @@ CREATE TABLE Supplies (
 	supplier_id CHAR(20)
 );
 
+# update tables for sails
+alter table AnOrder add createdAt timestamp;
+alter table Contains add createdAt timestamp;
+alter table Orders add createdAt timestamp;
+alter table Product add createdAt timestamp;
+alter table Supplier add createdAt timestamp;
+alter table Supplies add createdAt timestamp;
+alter table User add createdAt timestamp;
+
+alter table AnOrder add updatedAt timestamp;
+alter table Contains add updatedAt timestamp;
+alter table Orders add updatedAt timestamp;
+alter table Product add updatedAt timestamp;
+alter table Supplier add updatedAt timestamp;
+alter table Supplies add updatedAt timestamp;
+alter table User add updatedAt timestamp;
+
 -- add initial data --
 /*
 # contains orders placed
