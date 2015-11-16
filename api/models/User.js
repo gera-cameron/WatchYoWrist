@@ -10,7 +10,7 @@ module.exports = {
   connection: 'mysql',
   migrate: 'safe',
   attributes: {
-    userId : {type:'string'},
+    id : {type:'string'},
     address : {type:'string'},
     name : {type:'string'},
     password : {type:'string'},
