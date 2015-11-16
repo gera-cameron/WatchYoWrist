@@ -85,7 +85,7 @@ CREATE TABLE Supplies (
 );
 
 -- add initial data --
-
+/*
 # contains orders placed
 INSERT INTO AnOrder VALUES ('O001', '11/13/2015', TRUE, 1);
 INSERT INTO AnOrder VALUES ('O002', '11/13/2015', TRUE, 1);
@@ -145,3 +145,15 @@ INSERT INTO Supplies VALUES ('P009', 'S003');
 INSERT INTO Supplies VALUES ('P010', 'S003');
 INSERT INTO Supplies VALUES ('P011', 'S003');
 INSERT INTO Supplies VALUES ('P012', 'S003');
+*/
+-- constraints --
+
+#
+
+-- triggers --
+
+#
+
+-- assertions --
+
+#
