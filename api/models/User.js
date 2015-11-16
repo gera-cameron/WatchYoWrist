@@ -6,7 +6,7 @@
 */
 
 module.exports = {
-  tableName: 'user',
+  tableName: 'User',
   connection: 'mysql',
   migrate: 'safe',
   attributes: {
