@@ -29,8 +29,8 @@
 
 # order table
 CREATE TABLE AnOrder (
-	id CHAR(20),
-	date_bought CHAR(10),
+	id INT NOT NULL AUTO INCREMENT = 10000,
+	date_bought datetime NOT NULL DEFAULT CURDATE(),
 	paid BOOLEAN,
 	quantity INT,
 	PRIMARY KEY (id)
@@ -38,7 +38,7 @@ CREATE TABLE AnOrder (
 
 # product table
 CREATE TABLE Product (
-	id CHAR(20),
+	id INT NOT NULL AUTO INCREMENT = 20000,
 	name CHAR(20),
 	price REAL,
 	stock INT,
@@ -49,14 +49,14 @@ CREATE TABLE Product (
 
 # supplier table
 CREATE TABLE Supplier (
-	id CHAR(20),
+	id INT NOT NULL AUTO INCREMENT = 30000,
 	name CHAR(20),
 	PRIMARY KEY (id)
 );
 
 # user table
 CREATE TABLE User (
-	id CHAR(20),
+	id INT NOT NULL AUTO INCREMENT = 40000,
 	address CHAR(20),
 	name CHAR(20),
 	password CHAR(20),
@@ -67,21 +67,24 @@ CREATE TABLE User (
 
 # relation between AnOrder and Product with additional value 'quantity'
 CREATE TABLE Contains (
-	order_id CHAR(20),
-	product_id CHAR(20),
-	quantity INT
+	order_id INT),
+	product_id INT,
+	quantity INT CHECK (quantity <=
+		(SELECT quantity
+		FROM Product
+		WHERE id = Contains.order_id))
 );
 
 # relation between User and AnOrder
 CREATE TABLE Orders (
-	user_id CHAR(20),
-	order_id CHAR(20)
+	user_id INT,
+	order_id INT
 );
 
 # relation between Product and Supplier
 CREATE TABLE Supplies (
-	product_id CHAR(20),
-	supplier_id CHAR(20)
+	product_id INT,
+	supplier_id INT
 );
 
 # update tables for sails
@@ -163,12 +166,47 @@ INSERT INTO Supplies VALUES ('P010', 'S003');
 INSERT INTO Supplies VALUES ('P011', 'S003');
 INSERT INTO Supplies VALUES ('P012', 'S003');
 */
+
+/*
+	on new order:
+		create Orders with User.id and AnOrder.id
+		create AnOrder with (...)
+		Product.stock -= Contains.quantity
+	on new User:
+		create new User with (...)
+	On new Product:
+		create new Product with (...)
+	On new Supplier:
+		create new Supplier with (...)
+		update Supplies with Product.id and Supplier.id
+
+	On removal from any
+		(...)
+*/
+
 -- constraints --
 
 #
 
 -- triggers --
+CREATE OR REPLACE TRIGGER orderTrigger
+	AFTER INSERT ON Contains
+	REFERENCING NEW ROW AS NewTuple
+	FOR EACH ROW BEGIN
+		INSERT INTO Orders(user_id) VALUES (SELECT USER());
+		INSERT INTO Orders(order_id) VALUES (NewTuple.order_id);
+		INSERT INTO AnOrder(id) VALUES (NewTuple.order_id);
+		INSERT INTO AnOrder(paid) VALUES TRUE;
+		INSERT INTO AnOrder(quantity) VALUES (NewTuple.quantity);
+		UPDATE Product SET stock = stock - NewTuple.quantity;
+	END;
 
+CREATE OR REPLACE TRIGGER anOrderTrigger
+	AFTER INSERT ON AnOrder
+	REFERENCING NEW ROW AS NewTuple
+	FOR EACH ROW BEGIN
+		INSERT INTO
+	END;
 #
 
 -- assertions --
