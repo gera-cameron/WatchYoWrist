@@ -12,7 +12,7 @@
 	+-------------+
 	| 	TABLES		|		>>	* = PRIMARY KEY
 	+-------------+
-	|		AnOrder		|		->	id*, date_bought, paid, quantity
+	|		AnOrder		|		->	id*, date_bought, product, paid, quantity
 	|		Product		|		->	id*, name, price, stock, description, active
 	|		Supplier	|		->	id*, name
 	|		User			|		->	id*, address, name, password, email, is_Staff
@@ -31,8 +31,12 @@
 CREATE TABLE AnOrder (
 	id INT NOT NULL AUTO INCREMENT = 10000,
 	date_bought datetime NOT NULL DEFAULT CURDATE(),
+	product INT REFERENCING Product.id,
 	paid BOOLEAN,
-	quantity INT,
+	quantity INT CHECK (quantity <=
+		(SELECT quantity
+		FROM Product, AnOrder
+		WHERE AnOrder.product = Product.id)),
 	PRIMARY KEY (id)
 );
 
@@ -67,12 +71,9 @@ CREATE TABLE User (
 
 # relation between AnOrder and Product with additional value 'quantity'
 CREATE TABLE Contains (
-	order_id INT),
+	order_id INT,
 	product_id INT,
-	quantity INT CHECK (quantity <=
-		(SELECT quantity
-		FROM Product
-		WHERE id = Contains.order_id))
+	quantity INT
 );
 
 # relation between User and AnOrder
@@ -107,10 +108,10 @@ alter table User add updatedAt timestamp;
 -- add initial data --
 /*
 # contains orders placed
-INSERT INTO AnOrder VALUES ('O001', '11/13/2015', TRUE, 1);
-INSERT INTO AnOrder VALUES ('O002', '11/13/2015', TRUE, 1);
-INSERT INTO AnOrder VALUES ('O003', '11/13/2015', TRUE, 1);
-INSERT INTO AnOrder VALUES ('O004', '11/13/2015', TRUE, 1);
+INSERT INTO AnOrder VALUES (TRUE, 1);
+INSERT INTO AnOrder VALUES (TRUE, 1);
+INSERT INTO AnOrder VALUES (TRUE, 1);
+INSERT INTO AnOrder VALUES (TRUE, 1);
 
 # contains all products offered
 INSERT INTO Product VALUES ('P001', 'Basic 1', 5.00, 100, '1 month basic', TRUE);
