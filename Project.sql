@@ -32,7 +32,10 @@ CREATE TABLE AnOrder (
 	id CHAR(20),
 	date_bought CHAR(10),
 	paid BOOLEAN,
-	quantity INT,
+	quantity INT CHECK (quantity <=
+		(SELECT quantity
+		FROM Contains
+		WHERE id = Contains.order_id)),
 	PRIMARY KEY (id)
 );
 
@@ -163,6 +166,24 @@ INSERT INTO Supplies VALUES ('P010', 'S003');
 INSERT INTO Supplies VALUES ('P011', 'S003');
 INSERT INTO Supplies VALUES ('P012', 'S003');
 */
+
+/*
+	on new AnOrder:
+		create Orders with User.id and AnOrder.id
+		create Contains with AnOrder.id, Product.id, quantity
+		Product.stock -= Contains.quantity
+	on new User:
+		create new User with (...)
+	On new Product:
+		create new Product with (...)
+	On new Supplier:
+		create new Supplier with (...)
+		update Supplies with Product.id and Supplier.id
+
+	On removal from any
+		(...)
+*/
+
 -- constraints --
 
 #
