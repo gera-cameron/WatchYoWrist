@@ -39,6 +39,7 @@
 #
 ################################################
 
+config/connections.js
 config/local.js
 
 
@@ -80,7 +81,7 @@ bower_components
 ################################################
 .tmp
 dump.rdb
-config/connections.jsg
+config/connections.js
 
 
 
