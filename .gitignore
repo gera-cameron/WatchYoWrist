@@ -39,6 +39,7 @@
 #
 ################################################
 
+config/connections.js
 config/local.js
 config/development.js
 

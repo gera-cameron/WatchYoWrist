@@ -45,7 +45,13 @@ module.exports.connections = {
     host      : 'localhost',
     port      : 3306,
     user      : 'root',
+<<<<<<< HEAD
     database  : 'CISProject'
+=======
+    password  : 'K04b8244',
+    database  : 'OnlineStore'
+>>>>>>> c3c48e5100b759b9d76b61b8cfc6f2c8b9c14e67
+>>>>>>> 2198000bc8726adf87ab2a78ac55c2c8c59c20a0
   },
 
   /***************************************************************************
