@@ -10,8 +10,9 @@ module.exports = {
   connection: 'mysql',
   migrate: 'safe',
   attributes: {
-    id : {type:'string'},
-    date_bought : {type:'string'},
+    id : {type:'INT'},
+    date_bought : {type:'datetime'},
+    product : {type:'INT'},
     paid : {type:'boolean'},
     quantity : {type:'INT'},
   }
