@@ -79,7 +79,10 @@ CREATE TABLE AnOrder (
 		SELECT quantity
 		FROM Product
 		WHERE product = Product.id)),
-	PRIMARY KEY (id)
+	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,
+	PRIMARY KEY (id),
+	CHECK(quantity >= 1)
 );
 
 # product table
@@ -91,7 +94,8 @@ CREATE TABLE Product (
 	description CHAR(100),
 	active BOOLEAN,
 	supplier INT REFERENCES Supplier.id,
-	PRIMARY KEY (id)
+	PRIMARY KEY (id),
+	CHECK(quantity >= 1)
 );
 
 # supplier table
