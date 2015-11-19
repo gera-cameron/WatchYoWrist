@@ -178,8 +178,6 @@ INSERT INTO User (address, name, password, email, is_staff) VALUES ('815 7th St'
 CREATE TRIGGER newOrderTrigger
 	AFTER INSERT ON AnOrder
 	FOR EACH ROW
-	BEGIN
 		UPDATE Product
 		SET stock = stock - 1
 		WHERE AnOrder.cur_product = Product.id;
-	END;
