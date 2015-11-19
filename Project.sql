@@ -85,7 +85,7 @@ CREATE TABLE AnOrder (
 	cur_user INT REFERENCES User.id,
 	paid BOOLEAN,
 	quantity INT CHECK (quantity <= (
-		SELECT quantity
+		SELECT stock
 		FROM Product
 		WHERE product = Product.id)),
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
