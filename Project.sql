@@ -3,7 +3,16 @@
 	Cameron Gera
 	CIS4301
 	Project
-	We are working in MySQL for this project
+	We are working in MySQL for this project (MySQL does not support assertions)
+
+	We've taken a slightly different approach to the traditional online store
+		model - instead of selling individual products, we've instead opted to sell
+		monthly subscription services, watch bands in particular.  As seen in
+		'Product', there are three levels and four term lenghts for each.  Order
+		quantity shouldn't exceed 1 typically, but it is allowed to.
+
+	Our online store sells watch band subscriptions, where each level mails a
+		different manufacturer's watch band monthly.
 */
 
 /*
@@ -92,12 +101,11 @@ CREATE TABLE Product (
 	price REAL,
 	stock INT,
 	description CHAR(100),
-	active BOOLEAN,
+	active BOOLEAN CHECK (stock >= 0),
 	supplier INT REFERENCES Supplier.id,
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,
-	PRIMARY KEY (id),
-	CHECK(quantity >= 1)
+	PRIMARY KEY (id)
 );
 
 # supplier table
@@ -164,3 +172,12 @@ INSERT INTO User (address, name, password, email, is_staff) VALUES ('567 4th St'
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('953 9th Rd', 'Teddy Roosevelt', 'teddyteddy2', 'teddyr@email.com', FALSE);
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('815 7th St', 'Bill Clinton', 'lewinskylessthan3', 'bclinton@email.com', FALSE);
 */
+
+CREATE TRIGGER newOrderTrigger
+	AFTER INSERT ON AnOrder
+	FOR EACH ROW
+	BEGIN
+		UPDATE Product
+		SET stock = stock - 1
+		WHERE AnOrder.cur_product = Product.id;
+	END;
