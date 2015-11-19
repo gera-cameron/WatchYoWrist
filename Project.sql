@@ -153,7 +153,7 @@ INSERT INTO Product (name, price, stock, description, active, supplier) VALUES (
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 2', 28.00, 50, '3 month silver', TRUE, 30001);
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 3', 50.00, 50, '6 month silver', TRUE, 30001);
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 4', 99.00, 50, '12 month silver', TRUE, 30001);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 1', 20.00, 25, '1 month gold', TRUE), 30002;
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 1', 20.00, 25, '1 month gold', TRUE, 30002);
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 2', 58.00, 25, '3 month gold', TRUE, 30002);
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 3', 110.00, 25, '6 month gold', TRUE, 30002);
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 4', 210.00, 25, '12 month gold', TRUE, 30002);
