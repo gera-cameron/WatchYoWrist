@@ -116,6 +116,7 @@ CREATE TABLE User (
 	PRIMARY KEY (id)
 );
 
+# 
 ALTER TABLE AnOrder AUTO_INCREMENT = 10000;
 ALTER TABLE Product AUTO_INCREMENT = 20000;
 ALTER TABLE Supplier AUTO_INCREMENT = 30000;
@@ -123,19 +124,13 @@ ALTER TABLE User AUTO_INCREMENT = 40000;
 
 # update tables for sails
 alter table AnOrder add createdAt timestamp;
-#alter table Contains add createdAt timestamp;
-#alter table Orders add createdAt timestamp;
 alter table Product add createdAt timestamp;
 alter table Supplier add createdAt timestamp;
-#alter table Supplies add createdAt timestamp;
 alter table User add createdAt timestamp;
 
 alter table AnOrder add updatedAt timestamp;
-#alter table Contains add updatedAt timestamp;
-#alter table Orders add updatedAt timestamp;
 alter table Product add updatedAt timestamp;
 alter table Supplier add updatedAt timestamp;
-#alter table Supplies add updatedAt timestamp;
 alter table User add updatedAt timestamp;
 
 -- add initial data --
@@ -174,49 +169,3 @@ INSERT INTO User (address, name, password, email, is_staff) VALUES ('567 4th St'
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('953 9th Rd', 'Teddy Roosevelt', 'teddyteddy2', 'teddyr@email.com', FALSE);
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('815 7th St', 'Bill Clinton', 'lewinskylessthan3', 'bclinton@email.com', FALSE);
 */
-
-/*
-	on new order:
-		create Orders with User.id and AnOrder.id
-		create AnOrder with (...)
-		Product.stock -= Contains.quantity
-	on new User:
-		create new User with (...)
-	On new Product:
-		create new Product with (...)
-	On new Supplier:
-		create new Supplier with (...)
-		update Supplies with Product.id and Supplier.id
-
-	On removal from any
-		(...)
-*/
-
--- constraints --
-
-#
-
--- triggers --
-CREATE OR REPLACE TRIGGER orderTrigger
-	AFTER INSERT ON Contains
-	REFERENCES NEW ROW AS NewTuple
-	FOR EACH ROW BEGIN
-		INSERT INTO Orders(user_id) VALUES (SELECT USER());
-		INSERT INTO Orders(order_id) VALUES (NewTuple.order_id);
-		INSERT INTO AnOrder(id) VALUES (NewTuple.order_id);
-		INSERT INTO AnOrder(paid) VALUES TRUE;
-		INSERT INTO AnOrder(quantity) VALUES (NewTuple.quantity);
-		UPDATE Product SET stock = stock - NewTuple.quantity;
-	END;
-
-CREATE OR REPLACE TRIGGER anOrderTrigger
-	AFTER INSERT ON AnOrder
-	REFERENCES NEW ROW AS NewTuple
-	FOR EACH ROW BEGIN
-		INSERT INTO
-	END;
-#
-
--- assertions --
-
-#
