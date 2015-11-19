@@ -122,6 +122,7 @@ CREATE TABLE User (
 	PRIMARY KEY (id)
 );
 
+# Table alterations that are required
 ALTER TABLE AnOrder AUTO_INCREMENT = 10000;
 ALTER TABLE Product AUTO_INCREMENT = 20000;
 ALTER TABLE Supplier AUTO_INCREMENT = 30000;
