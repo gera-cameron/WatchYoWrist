@@ -127,16 +127,13 @@ ALTER TABLE Product AUTO_INCREMENT = 20000;
 ALTER TABLE Supplier AUTO_INCREMENT = 30000;
 ALTER TABLE User AUTO_INCREMENT = 40000;
 
-# update tables for sails
-
-
 -- add initial data --
 /*
 # contains orders placed
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20000, 40000, TRUE, 1);
-INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20001, 40003, TRUE, 1);
-INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20002, 40002, TRUE, 1);
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20003, 40001, TRUE, 1);
+INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20007, 40002, TRUE, 1);
+INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20010, 40003, TRUE, 1);
 
 # contains all products offered
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 1', 5.00, 100, '1 month basic', TRUE, 30000);
