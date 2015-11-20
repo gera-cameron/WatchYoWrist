@@ -84,11 +84,7 @@ CREATE TABLE AnOrder (
 	cur_product INT REFERENCES Product.id,
 	cur_user INT REFERENCES User.id,
 	paid BOOLEAN,
-	quantity INT CHECK (quantity <= (
-		SELECT stock
-		FROM Product
-		WHERE product = Product.id) &&
-		quantity >= 1),
+	quantity INT,
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
@@ -101,7 +97,7 @@ CREATE TABLE Product (
 	price REAL,
 	stock INT,
 	description CHAR(100),
-	active BOOLEAN CHECK (stock >= 0),
+	active BOOLEAN,
 	supplier INT REFERENCES Supplier.id,
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,
@@ -143,6 +139,7 @@ INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20000, 40000
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20003, 40001, TRUE, 1);
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20007, 40002, TRUE, 1);
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20010, 40003, TRUE, 1);
+INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20010, 40004, TRUE, 24);
 
 # contains all products offered
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 1', 5.00, 100, '1 month basic', TRUE, 30000);
@@ -173,10 +170,16 @@ INSERT INTO User (address, name, password, email, is_staff) VALUES ('953 9th Rd'
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('815 7th St', 'Bill Clinton', 'lewinskylessthan3', 'bclinton@email.com', FALSE);
 */
 
+delimiter //
 CREATE TRIGGER newOrderTrigger
 AFTER INSERT ON AnOrder
-FOR EACH ROW
+FOR EACH ROW BEGIN
 	UPDATE Product
 	SET stock = stock - NEW.quantity
-	WHERE id = NEW.cur_product;
-	
+	WHERE id = NEW.cur_product AND stock >= NEW.quantity;
+	UPDATE Product
+	SET active = FALSE
+	WHERE stock = 0 AND active = TRUE;
+END;
+//
+delimiter ;
