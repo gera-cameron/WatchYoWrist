@@ -95,7 +95,7 @@ CREATE TABLE Product (
 	id INT NOT NULL AUTO_INCREMENT,
 	name CHAR(20),
 	price REAL,
-	stock INT CHECK (stock >= 0),
+	stock INT,
 	description CHAR(100),
 	active BOOLEAN,
 	supplier INT REFERENCES Supplier.id,
@@ -139,7 +139,6 @@ INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20000, 40000
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20003, 40001, TRUE, 1);
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20007, 40002, TRUE, 1);
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20010, 40003, TRUE, 1);
-INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20010, 40004, TRUE, 24);
 
 # contains all products offered
 INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 1', 5.00, 100, '1 month basic', TRUE, 30000);
@@ -175,7 +174,7 @@ DELIMITER //
 CREATE TRIGGER beforeNewOrder
 BEFORE INSERT ON AnOrder
 FOR EACH ROW BEGIN
-	IF(NEW.quantity) <= 1 THEN
+	IF(NEW.quantity) <= 0 THEN
 		SIGNAL SQLSTATE '22003' SET message_text = "ERROR: INVALID QUANTITY";
 	END IF;
 	IF(NEW.quantity) > (
@@ -189,7 +188,7 @@ FOR EACH ROW BEGIN
 		FROM Product
 		WHERE NEW.cur_product = id) = FALSE
 		THEN
-			SIGNAL SQLSTATE '22000' SET message_text = "ERROR: INNACTIVE PRODUCT";
+			SIGNAL SQLSTATE '22000' SET message_text = "ERROR: INACTIVE PRODUCT";
 	END IF;
 END;
 //
