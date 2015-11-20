@@ -3,7 +3,8 @@
 	Cameron Gera
 	CIS4301
 	Project
-	We are working in MySQL for this project (MySQL does not support assertions)
+	We are working in MySQL for this project (MySQL does not support assertions or
+	 checks)
 
 	We've taken a slightly different approach to the traditional online store
 		model - instead of selling individual products, we've instead opted to sell
