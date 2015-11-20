@@ -87,8 +87,8 @@ CREATE TABLE AnOrder (
 	quantity INT CHECK (quantity <= (
 		SELECT stock
 		FROM Product
-		WHERE product = Product.id) &&
-		quantity >= 1),
+		WHERE product = Product.id)),
+	CHECK (quantity >= 1),
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,
 	PRIMARY KEY (id)
@@ -99,9 +99,9 @@ CREATE TABLE Product (
 	id INT NOT NULL AUTO_INCREMENT,
 	name CHAR(20),
 	price REAL,
-	stock INT,
+	stock INT CHECK (stock >= 0),
 	description CHAR(100),
-	active BOOLEAN CHECK (stock >= 0),
+	active BOOLEAN,
 	supplier INT REFERENCES Supplier.id,
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,
@@ -173,17 +173,39 @@ INSERT INTO User (address, name, password, email, is_staff) VALUES ('953 9th Rd'
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('815 7th St', 'Bill Clinton', 'lewinskylessthan3', 'bclinton@email.com', FALSE);
 */
 
+DELIMITER //
+CREATE TRIGGER beforeNewOrder
+BEFORE INSERT ON AnOrder
+FOR EACH ROW BEGIN
+	IF(NEW.quantity) <= 1 THEN
+		SIGNAL SQLSTATE '22003' SET message_text = "ERROR: INVALID QUANTITY";
+	END IF;
+	IF(NEW.quantity) > (
+		SELECT stock
+		FROM Product
+		WHERE NEW.cur_product = id
+	) THEN
+		SIGNAL SQLSTATE '22003' SET message_text = "ERROR: QUANTITY > STOCK";
+	END IF;
+	IF (SELECT active
+		FROM Product
+		WHERE NEW.cur_product = id) = FALSE
+		THEN
+			SIGNAL SQLSTATE '22000' SET message_text = "ERROR: INNACTIVE PRODUCT";
+	END IF;
+END;
+//
+
 CREATE TRIGGER newOrderTrigger
 AFTER INSERT ON AnOrder
-FOR EACH ROW
+FOR EACH ROW BEGIN
 	UPDATE Product
 	SET stock = stock - NEW.quantity
-	WHERE NEW.cur_product = id;
-
-CREATE TRIGGER outOfStock
-AFTER UPDATE ON Product
-FOR EACH ROW
-IF stock = 0 AND active = TRUE THEN
+	WHERE NEW.cur_product = id
+	AND active = TRUE;
 	UPDATE Product
-	SET active = FALSE;
-END IF;
+	SET active = FALSE
+	WHERE stock = 0 AND active = TRUE;
+END;
+//
+DELIMITER ;
