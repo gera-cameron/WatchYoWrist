@@ -173,18 +173,17 @@ INSERT INTO User (address, name, password, email, is_staff) VALUES ('953 9th Rd'
 INSERT INTO User (address, name, password, email, is_staff) VALUES ('815 7th St', 'Bill Clinton', 'lewinskylessthan3', 'bclinton@email.com', FALSE);
 */
 
-DELIMETER //
 CREATE TRIGGER newOrderTrigger
 AFTER INSERT ON AnOrder
-FOR EACH ROW BEGIN
+FOR EACH ROW
 	UPDATE Product
-	SET stock = stock - quantity
-	WHERE AnOrder.cur_product = Product.id;
-	IF stock = 0 THEN
-		UPDATE Product
-		SET active = FALSE
-		WHERE AnOrder.cur_product = Product.id;
-	END IF;
-END;
-//
-DELIMETER ;
+	SET stock = stock - NEW.quantity
+	WHERE NEW.cur_product = id;
+
+CREATE TRIGGER outOfStock
+AFTER UPDATE ON Product
+FOR EACH ROW
+IF stock = 0 AND active = TRUE THEN
+	UPDATE Product
+	SET active = FALSE;
+END IF;
