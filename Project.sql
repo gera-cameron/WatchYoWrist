@@ -3,7 +3,7 @@
 	Cameron Gera
 	CIS4301
 	Project
-	
+
 	We are working in MySQL for this project (MySQL does not support assertions or
 	 checks)
 
@@ -206,6 +206,7 @@ END;
 	decrease stock by quantity on order
 	change active to false on stock = 0
 */
+
 CREATE TRIGGER newOrderTrigger
 AFTER INSERT ON AnOrder
 FOR EACH ROW BEGIN
