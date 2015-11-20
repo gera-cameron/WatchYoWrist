@@ -178,12 +178,5 @@ AFTER INSERT ON AnOrder
 FOR EACH ROW
 	UPDATE Product
 	SET stock = stock - NEW.quantity
-	WHERE NEW.cur_product = id;
-
-CREATE TRIGGER outOfStock
-AFTER UPDATE ON Product
-FOR EACH ROW
-IF stock = 0 AND active = TRUE THEN
-	UPDATE Product
-	SET active = FALSE;
-END IF;
+	WHERE id = NEW.cur_product;
+	
