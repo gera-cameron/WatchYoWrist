@@ -177,7 +177,7 @@ CREATE TRIGGER newOrderTrigger
 	AFTER INSERT ON AnOrder
 	FOR EACH ROW
 		UPDATE Product
-		SET stock = stock - 1
+		SET stock = stock - quantity
 		WHERE AnOrder.cur_product = Product.id;
 
 CREATE TRIGGER
