@@ -1,5 +1,5 @@
 {
-  "name": "WatchYoWrist",
+  "name": "broskj",
   "dependencies": {
     "angular-bootstrap": "~0.11.0",
     "angular-moment": "~0.7.1",
@@ -8,5 +8,27 @@
     "angular-mocks": "~1.2.21",
     "jquery": "~2.1.3",
     "bootstrap": "~3.3.5"
-  }
+  },
+  "homepage": "https://github.com/gera-cameron/WatchYoWrist",
+  "authors": [
+    "Kyle Brost <kjbrost@gmail.com>"
+  ],
+  "description": "bower.json",
+  "main": "bower.json",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node",
+    "yui"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
 }
