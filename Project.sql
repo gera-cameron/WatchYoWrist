@@ -3,7 +3,7 @@
 	Cameron Gera
 	CIS4301
 	Project
-	
+
 	We are working in MySQL for this project (MySQL does not support assertions or
 	 checks)
 

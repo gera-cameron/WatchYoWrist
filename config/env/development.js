@@ -20,5 +20,6 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
+  tokenSecret: 'qhAO2iCc8daIaU3w%2L*^&#Hmi'
 
 };
