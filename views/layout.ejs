@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app= "watchYoWrist">
   <head>
     <title>Watch-Yo-Wrist</title>
 
@@ -35,11 +35,6 @@
 
   <body>
     <%- body %>
-      Here we will be creating a store that offers a monthly watch membership. Users will select the
-      styles of watch and the watch they own. Then we will create a queue of watch bands they will recieve
-      each. 
-
-
     <!--
         Client-side Templates
         ========================
@@ -62,7 +57,7 @@
     -->
 
     <!--TEMPLATES-->
-    
+    <script type="text/javascript" src="/jst.js"></script>
     <!--TEMPLATES END-->
 
 
@@ -91,6 +86,11 @@
 
     <!--SCRIPTS-->
     <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="/js/app.js"></script>
     <!--SCRIPTS END-->
   </body>
 </html>
