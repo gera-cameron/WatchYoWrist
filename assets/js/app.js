@@ -5,8 +5,8 @@ angular.module('watchYoWrist', [
 ]).
 config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/', {
-       templateUrl: 'templates/login.html',
-       controller: 'LoginCtrl'
+       templateUrl: 'templates/home.html',
+       controller: 'HomeCtrl'
    });
    $routeProvider.otherwise({
         redirectTo: '/'
@@ -30,4 +30,17 @@ controller('LoginCtrl',['$scope','$log','$http', function($scope,$log,$http){
           // or server returns response with an error status.
         });
       };
+}])
+.controller('HomeCtrl',['$scope','$log','$http', function($scope,$log,$http){
+      $scope.products = {};
+      $scope.getProduct = function(storeProducts){
+        $http({
+          method: 'GET',
+          url: '/Products',
+      }).then(function successCallback(response){
+          $log.debug(response);
+      }, function errorCallback(response){
+
+      });
+    };
 }]);
