@@ -1,0 +1,78 @@
+/*
+TODO:
+    add banner/picture, 
+    finalize title, change icon
+*/
+
+body {
+    padding-top: 55px;
+    padding-bottom: 50px;
+    background-color: dimgray;
+    background-image: url(img/background3.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+h1,
+h2,
+h3,
+a,
+.page-header,
+.form-control,
+.btn {
+    color: whitesmoke;
+    font-family: 'Raleway', sans-serif;
+}
+
+p {
+    color: whitesmoke;
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
+}
+
+a:link {
+    color: whitesmoke;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: floralwhite;
+}
+
+.right-nav {
+    margin-right: 5px;
+}
+
+.landing-title {
+    color: white;
+    font-family: 'Raleway', sans-serif;
+    font-size: 300%;
+}
+
+.page-header {
+    padding-top: 20px;
+}
+
+.img-main {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.row {
+    justify-content: center;
+}
+
+.col-md-4 {
+    display: block;
+    text-align: center;
+    padding: 15px
+}
+
+.img-responsive {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
