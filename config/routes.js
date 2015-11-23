@@ -36,6 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
   'post /login'                       : 'LoginController.login',
+  'get /product'                      : 'ProductController.find',
+
   /***************************************************************************
   *                                                                          *
   * Custom routes here...                                                    *
