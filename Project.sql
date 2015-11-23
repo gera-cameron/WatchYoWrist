@@ -16,7 +16,7 @@
 	Our online store sells watch band subscriptions, where each level mails a
 		different manufacturer's watch band monthly.
 */
-
+#test
 /*
 +-----------------------+
 | Tables_in_OnlineStore |
@@ -206,6 +206,7 @@ END;
 	decrease stock by quantity on order
 	change active to false on stock = 0
 */
+
 CREATE TRIGGER newOrderTrigger
 AFTER INSERT ON AnOrder
 FOR EACH ROW BEGIN
