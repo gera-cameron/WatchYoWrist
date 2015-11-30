@@ -1,6 +1,6 @@
 /*
 TODO:
-    add banner/picture, 
+    add banner/picture,
     finalize title, change icon
 */
 
@@ -49,6 +49,12 @@ a:visited {
     color: white;
     font-family: 'Raleway', sans-serif;
     font-size: 300%;
+}
+
+.divider{
+    width:5px;
+    height:auto;
+    display:inline-block;
 }
 
 .page-header {

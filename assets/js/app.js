@@ -12,6 +12,17 @@ config(['$routeProvider', function($routeProvider) {
         redirectTo: '/'
     });
 }]).
+controller('HomeCtrl',['$scope','$log','$http', function($scope,$log,$http){
+      $scope.products = {};
+      $http({
+          method: 'GET',
+          url: '/Product',
+      }).success(function(response){
+          $log.debug(response);
+          $scope.products = response;
+      });
+
+    }]).
 controller('LoginCtrl',['$scope','$log','$http', function($scope,$log,$http){
       $scope.userData = {};
       $scope.loginSubmit = function(submittedUser){
@@ -31,16 +42,4 @@ controller('LoginCtrl',['$scope','$log','$http', function($scope,$log,$http){
         });
       };
 }])
-.controller('HomeCtrl',['$scope','$log','$http', function($scope,$log,$http){
-      $scope.products = {};
-      $scope.getProduct = function(storeProducts){
-        $http({
-          method: 'GET',
-          url: '/Products',
-      }).then(function successCallback(response){
-          $log.debug(response);
-      }, function errorCallback(response){
-
-      });
-    };
-}]);
+;
