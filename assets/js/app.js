@@ -53,7 +53,8 @@ controller('NewUserCtrl',['$scope','$log','$http', function($scope,$log,$http){
         address: createdUser.address,
         name: createdUser.name,
         email : createdUser.email,
-        password : createdUser.password
+        password : createdUser.password,
+        is_staff : false
       }
     }).then(function successCallback(response) {
         $log.debug(response);
@@ -61,6 +62,7 @@ controller('NewUserCtrl',['$scope','$log','$http', function($scope,$log,$http){
       // called asynchronously if an error occurs
       // or server returns response with an error status.
     });
+
   };
 }])
 ;
