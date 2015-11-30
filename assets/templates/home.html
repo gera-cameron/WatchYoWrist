@@ -39,7 +39,6 @@
                 <ul class="nav navbar-nav">
                     <li class="dropdown dropdown-collapse">
                         <a data-toggle="dropdown" datatarget=".dropdown-collapse">MENU<span class="caret"></span></a>
-                        </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             <li><a href="#" data-toggle="dropdown" data-target=".dropdown-collapse">HOME</a></li>
                             <li><a href="#" data-toggle="dropdown" data-target=".dropdown-collapse">PRODUCTS</a></li>
@@ -59,7 +58,7 @@
                         </form>
                     </li>
                     <li class="dropdown dropdown-collapse">
-                        <a data-toggle="dropdown" datatarget=".dropdown-collapse">LOGIN</a>
+                        <a data-toggle="dropdown" datatarget=".dropdown-collapse">LOGIN<span class="caret"></a>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="padding:8px;">
                             <form>
                                 <div class="form-group">
@@ -70,7 +69,9 @@
                                     <label for="exampleInputPassword1">Password</label>
                                     <input type="password" ng-model="userData.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                 </div>
-                                <button type="submit" ng-click="loginSubmit(userData)" class="btn btn-default">Login</button>
+                                <button type="submit" ng-click="loginSubmit(userData)" class="btn btn-success">Login</span>
+                                </button>
+                                <!-- create new user -->
                             </form>
                         </ul>
                     </li>
