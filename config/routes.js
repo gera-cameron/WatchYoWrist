@@ -37,6 +37,8 @@ module.exports.routes = {
   },
   'post /login'                       : 'LoginController.login',
   'get /Product'                      : 'ProductController.find',
+  'post /User/create'                 : 'UserController.create',
+
 
   /***************************************************************************
   *                                                                          *

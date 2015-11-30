@@ -41,5 +41,26 @@ controller('LoginCtrl',['$scope','$log','$http', function($scope,$log,$http){
           // or server returns response with an error status.
         });
       };
+}]).
+controller('NewUserCtrl',['$scope','$log','$http', function($scope,$log,$http){
+  $scope.newUserData = {};
+  $scope.createUser = function(createdUser){
+    $log.debug(createdUser);
+    $http({
+      method: 'POST',
+      url: '/User/create',
+      params: {
+        address: createdUser.address,
+        name: createdUser.name,
+        email : createdUser.email,
+        password : createdUser.password
+      }
+    }).then(function successCallback(response) {
+        $log.debug(response);
+    }, function errorCallback(response) {
+      // called asynchronously if an error occurs
+      // or server returns response with an error status.
+    });
+  };
 }])
 ;
