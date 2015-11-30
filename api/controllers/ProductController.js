@@ -15,7 +15,7 @@ module.exports = {
 		Product.find()
 		.then(function(product){
 			sails.log.verbose("product is", product);
-			while(product != NULL){
+			while(product){
 						return res.send(product);
 			}
 		})
