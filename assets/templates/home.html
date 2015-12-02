@@ -19,14 +19,14 @@
             <ul class="list-group">
                 <li class="list-group-item clearfix" ng-repeat="product in products">
                     <b class="navStyle">{{product.name}}</b>
-                    <div class="btn-group" role="group" style="float: right" aria-label="...">
+                    <div class="btn-group" role="group" style="float:right" aria-label="...">
                         <button class="btn btn-info" type="button" ng-init="product.toggle" ng-click="product.toggle = !product.toggle"><i class="glyphicon glyphicon-info-sign"></i></button>
                         <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-shopping-cart"></i></button>
                     </div>
                     <div ng-show="product.toggle">
                         <div class="container">
-                            <p class="navStyle"><b>Description: </b><i>{{product.description}}</i></p>
-                            <p class="navStyle"><b>Price: $</b><i>{{product.price}}</i></p>
+                            <p class="navStyle "><b>Description: </b><i>{{product.description}}</i></p>
+                            <p class="navStyle "><b>Price: $</b><i>{{product.price}}</i></p>
                         </div>
                     </div>
                 </li>
