@@ -85,27 +85,26 @@
                             <a data-toggle="dropdown" datatarget=".dropdown-collapse">SIGN UP<span class="caret"></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="padding:8px;">
                                 <div ng-controller="NewUserCtrl">
-                                  <div ng-controller="LoginCtrl">
-                                    <form>
-                                        <div class="form-group">
-                                            <label for="exampleInputName">Name</label>
-                                            <input type="name" ng-model="newUserData.name" class="form-control" id="exampleInputName" placeholder="Name">
-                                            <p></p>
-                                            <label for="exampleInputAddress">Address</label>
-                                            <input type="address" ng-model="newUserData.address" class="form-control" id="exampleInputAddress" placeholder="Address">
-                                            <p></p>
-                                            <label for="exampleInputEmail1">Email</label>
-                                            <input type="email" ng-model="newUserData.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-                                            <p></p>
-                                            <label for="exampleInputPassword2">Password</label>
-                                            <input type="password" ng-model="newUserData.password" class="form-control" id="exampleInputPassword2" placeholder="Password">
-                                            <p></p>
-                                        </div>
-                                        <div class="btn-group-vertical" role="group" aria-label="...">
-                                            <button type="submit" ng-click="createUser(newUserData); loginSubmit(newUserData)" class="btn btn-success">Register</button>
-                                        </div>
-                                    </form>
-                                  </div>
+                                    <div ng-controller="LoginCtrl">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="exampleInputName">Name</label>
+                                                <input type="name" ng-model="newUserData.name" class="form-control" id="exampleInputName" placeholder="Name">
+                                                <p></p>
+                                                <label for="exampleInputAddress">Address</label>
+                                                <input type="address" ng-model="newUserData.address" class="form-control" id="exampleInputAddress" placeholder="Address">
+                                                <p></p>
+                                                <label for="exampleInputEmail1">Email</label>
+                                                <input type="email" ng-model="newUserData.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                                <p></p>
+                                                <label for="exampleInputPassword2">Password</label>
+                                                <input type="password" ng-model="newUserData.password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                                <p></p>
+                                            </div>
+                                            <button type="submit" ng-click="createUser(newUserData); loginSubmit(newUserData)" class="btn btn-success btn-block">Register</button>
+                                            <li role="separator" class="divider"></li>
+                                        </form>
+                                    </div>
                                 </div>
                             </ul>
                         </li>
