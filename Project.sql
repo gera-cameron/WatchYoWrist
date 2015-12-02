@@ -122,7 +122,7 @@ CREATE TABLE User (
 	address CHAR(20),
 	name CHAR(20),
 	password CHAR(20),
-	email CHAR(20) UNIQUE,
+	email CHAR(40) UNIQUE,
 	is_staff BOOLEAN,
 	createdAt timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	updatedAt timestamp ON UPDATE CURRENT_TIMESTAMP,

@@ -32,9 +32,6 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  '/': {
-    view: 'homepage'
-  },
   'post /login'                       : 'LoginController.login',
   'get /Product'                      : 'ProductController.find',
 

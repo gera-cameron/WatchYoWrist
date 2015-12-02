@@ -15,6 +15,8 @@ module.exports = {
         if(user){
           if(user.password === password){
               return res.send(user);
+          } else {
+            return res.badRequest();
           }
         } else {
           return res.badRequest();
