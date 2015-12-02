@@ -32,13 +32,10 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-<<<<<<< HEAD
+
   'post /login'                       : 'LoginController.login',
   'get /Product'                      : 'ProductController.find',
-=======
-    'post /login': 'LoginController.login',
-    'get /Product': 'ProductController.find',
->>>>>>> f69ece60450fe1e945de6c259ce1813309bb248b
+
 
 
     /***************************************************************************
