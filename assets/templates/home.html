@@ -24,9 +24,12 @@
                         <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-shopping-cart"></i></button>
                     </div>
                     <div ng-show="product.toggle">
-                      <p class="navStyle"><b>Description: </b><i>{{product.description}}</i></p>
-                      <p class="navStyle"><b>Price: $</b><i>{{product.price}}</i></p>
-                      <!--Add design for toggle-->
+                        <div class="container">
+                            <p class="navStyle"><b>Description: </b><i>{{product.description}}</i></p>
+                            <p class="navStyle"><b>Price: $</b><i>{{product.price}}</i></p>
+                        </div>
+
+                        <!--Add design for toggle-->
                     </div>
                 </li>
             </ul>
