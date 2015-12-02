@@ -32,11 +32,8 @@ module.exports.routes = {
      *                                                                          *
      ***************************************************************************/
 
-
-  'post /login'                       : 'LoginController.login',
-  'get /Product'                      : 'ProductController.find',
-
-
+    'post /login': 'LoginController.login',
+    'get /Product': 'ProductController.find',
 
     /***************************************************************************
      *                                                                          *
