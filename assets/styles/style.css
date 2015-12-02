@@ -8,7 +8,7 @@ body {
     padding-top: 55px;
     padding-bottom: 50px;
     background-color: dimgray;
-    background-image: url(/assets/images/background3.png);
+    background-image: url(/images/background3.png);
     background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -24,6 +24,10 @@ a,
 .btn {
     color: whitesmoke;
     font-family: 'Raleway', sans-serif;
+}
+.navStyle{
+  color:#777;
+  font-family: 'Raleway', sans-serif;
 }
 
 p {

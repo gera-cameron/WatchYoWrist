@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html ng-app="watchYoWrist">
+  <head>
+    <title>WatchYoWrist</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Kyle Brost Cameron Gera">
+    <meta name="description" content="Watch Yo Wrist - Watches are our Service">
+    <meta name="keywords" content="Watch, Yo, Wrist, Watch Yo Wrist">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="shortcut icon" href="images/icon2.png" type="image/vnd.microsoft.icon">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles/style.css" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="/js/dependencies/sails.io.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+    <script src="js/app.js" type="text/javascript"></script>
+
+  </head>
+  <body>
+    <div class="container" ng-controller="MainCtrl">
+        <h1> WatchYoWrist <small>Watches are Our Service</small> </h1>
+        <nav class="navbar navbar-default navbar-fixed-top" data-toggle="collapse" data-target="navbar-collapse">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="#/" class="navbar-brand">WYW</a>
+                </div>
+                <div id="myNavbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a id="dropdownMenu1" class="dropdown-toggle" data-toggle="dropdown" data-target="#">MENU<span class="caret"></span></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownmenu1">
+                                <li><a class="dropdown-item" href="#/about" data-toggle="dropdown">ABOUT</a></li>
+                                <li><a class="dropdown-item" href="#/products" data-toggle="dropdown">PRODUCTS</a></li>
+                                <li><a class="dropdown-item" href="#/cart" data-toggle="dropdown">CART</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="search">
+                            <form class="navbar-form" role="search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="dropdown dropdown-collapse" ng-if="!loggedOn">
+                            <a data-toggle="dropdown" datatarget=".dropdown-collapse">LOGIN<span class="caret"></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="padding:8px;">
+                                <div ng-controller="LoginCtrl">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Email address</label>
+                                            <input type="email" ng-model="userData.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">Password</label>
+                                            <input type="password" ng-model="userData.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                                        </div>
+                                        <button type="submit" ng-click="loginSubmit(userData)" class="btn btn-success btn-block">Login</button>
+                                        <div class="alert alert-danger" role="alert" ng-show="message">
+                                          <p>{{message.feedback}}</p>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ul>
+                        </li>
+                        <li class="dropdown dropdown-collapse" ng-if="!loggedOn">
+                            <a data-toggle="dropdown" datatarget=".dropdown-collapse">SIGN UP<span class="caret"></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="padding:8px;">
+                                <div ng-controller="NewUserCtrl">
+                                    <form>
+                                        <div class="form-group">
+                                            <label for="exampleInputName">Name</label>
+                                            <input type="name" ng-model="newUserData.name" class="form-control" id="exampleInputName" placeholder="Name">
+                                            <p></p>
+                                            <label for="exampleInputAddress">Address</label>
+                                            <input type="address" ng-model="newUserData.address" class="form-control" id="exampleInputAddress" placeholder="Address">
+                                            <p></p>
+                                            <label for="exampleInputEmail1">Email</label>
+                                            <input type="email" ng-model="newUserData.email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                                            <p></p>
+                                            <label for="exampleInputPassword2">Password</label>
+                                            <input type="password" ng-model="newUserData.password" class="form-control" id="exampleInputPassword2" placeholder="Password">
+                                            <p></p>
+                                        </div>
+                                        <div class="btn-group-vertical" role="group" aria-label="...">
+                                            <button type="submit" ng-click="createUser(newUserData)" class="btn btn-success">Register</button>
+                                            <button type="submit" class="btn btn-success">Continue as Guest</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </ul>
+                        </li>
+                        <li ng-if="loggedOn" ng-click="logout()" role="button" style="padding:15px;">
+                            <span class="navStyle"> LOGOUT </span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div ng-view></div>
+    </div>
+
+  </body>
+</html>

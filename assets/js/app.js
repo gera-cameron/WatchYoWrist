@@ -1,17 +1,39 @@
 'use strict';
 
 angular.module('watchYoWrist', [
-  'ngRoute'
+  'ngRoute','ngCookies'
 ]).
 config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {
+    $routeProvider
+    .when('/', {
        templateUrl: 'templates/home.html',
        controller: 'HomeCtrl'
+   })
+   .when('/about', {
+      templateUrl: 'templates/about.html',
+      controller: 'AboutCtrl'
+  })
+  .when('/cart', {
+     templateUrl: 'templates/cart.html',
+     controller: 'CartCtrl'
    });
    $routeProvider.otherwise({
         redirectTo: '/'
     });
 }]).
+controller('MainCtrl',['$scope','$log','$http','$cookies','$window', function($scope,$log,$http,$cookies,$window){
+      var userCookie = $cookies.getObject('user');
+      $log.info(userCookie);
+      $scope.loggedOn = false;
+      if(userCookie){
+        $scope.loggedOn = true;
+      }
+      $scope.logout = function(){
+        $cookies.remove('user');
+        $window.location.href = "/";
+      };
+
+    }]).
 controller('HomeCtrl',['$scope','$log','$http', function($scope,$log,$http){
       $scope.products = {};
       $http({
@@ -23,9 +45,17 @@ controller('HomeCtrl',['$scope','$log','$http', function($scope,$log,$http){
       });
 
     }]).
-controller('LoginCtrl',['$scope','$log','$http', function($scope,$log,$http){
+controller('AboutCtrl',['$scope','$log','$http', function($scope,$log,$http){
+
+    }]).
+controller('CartCtrl',['$scope','$log','$http', function($scope,$log,$http){
+
+    }]).
+controller('LoginCtrl',['$scope','$log','$http','$cookies', '$window', function($scope,$log,$http,$cookies,$window){
+      $scope.message = false;
       $scope.userData = {};
       $scope.loginSubmit = function(submittedUser){
+        $scope.message = false;
         $log.debug(submittedUser);
         $http({
           method: 'POST',
@@ -35,8 +65,11 @@ controller('LoginCtrl',['$scope','$log','$http', function($scope,$log,$http){
             password : submittedUser.password
           }
         }).then(function successCallback(response) {
+            $cookies.putObject('user',response.data);
+            $window.location.href = "/";
             $log.debug(response);
         }, function errorCallback(response) {
+            $scope.message = {feedback:'Incorrect Username or Password'};
           // called asynchronously if an error occurs
           // or server returns response with an error status.
         });
