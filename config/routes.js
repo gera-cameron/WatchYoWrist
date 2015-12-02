@@ -35,7 +35,6 @@ module.exports.routes = {
     'post /login': 'LoginController.login',
     'get /Product': 'ProductController.find',
 
-
     /***************************************************************************
      *                                                                          *
      * Custom routes here...                                                    *

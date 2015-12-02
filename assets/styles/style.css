@@ -19,7 +19,11 @@ h1,
 h2,
 h3,
 a,
+<<<<<<< HEAD
 .page-header,.form-control,
+=======
+.page-header,
+>>>>>>> 11c1c3a8fec299b1527a912bfb2c068bf6424185
 .btn {
     color: whitesmoke;
     font-family: 'Raleway', sans-serif;
