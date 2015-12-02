@@ -25,9 +25,19 @@ a,
     color: whitesmoke;
     font-family: 'Raleway', sans-serif;
 }
-.navStyle{
-  color:#777;
-  font-family: 'Raleway', sans-serif;
+
+.form-control {
+    color: black;
+}
+
+.list-group-item {
+    padding: 12px;
+    font-size: 22px;
+}
+
+.navStyle {
+    color: #777;
+    font-family: 'Raleway', sans-serif;
 }
 
 p {
@@ -55,10 +65,10 @@ a:visited {
     font-size: 300%;
 }
 
-.divider{
-    width:5px;
-    height:auto;
-    display:inline-block;
+.divider {
+    width: 5px;
+    height: auto;
+    display: inline-block;
 }
 
 .page-header {
