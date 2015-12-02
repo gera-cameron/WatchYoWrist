@@ -55,8 +55,10 @@ controller('AboutCtrl',['$scope','$log','$http', function($scope,$log,$http){
 controller('CartCtrl',['$scope','$log','$http', function($scope,$log,$http){
 
     }]).
-controller('UserCtrl',['$scope','$log','$http', function($scope,$log,$http){
+controller('UserCtrl',['$scope','$log','$http', '$cookies',function($scope,$log,$http,$cookies){
+    $scope.userObject = {};
 
+    $scope.userObject=$cookies.getObject('user');
     }]).
 controller('LoginCtrl',['$scope','$log','$http','$cookies', '$window', function($scope,$log,$http,$cookies,$window){
       $scope.message = false;
