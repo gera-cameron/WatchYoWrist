@@ -72,7 +72,7 @@
                                             <label for="exampleInputPassword1">Password</label>
                                             <input type="password" ng-model="userData.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                         </div>
-                                        <button type="submit" ng-click="loginSubmit(userData)" class="btn btn-success btn-block">Login</button>
+                                        <button type="submit" ng-click="loginSubmit(userData)" class="btn btn-primary btn-block">Login</button>
                                         <li role="separator" class="divider"></li>
                                         <div class="alert alert-danger" role="alert" ng-show="message">
                                             <p class="navStyle">{{message.feedback}}</p>
@@ -101,7 +101,7 @@
                                                 <input type="password" ng-model="newUserData.password" class="form-control" id="exampleInputPassword2" placeholder="Password">
                                                 <p></p>
                                             </div>
-                                            <button type="submit" ng-click="createUser(newUserData); loginSubmit(newUserData)" class="btn btn-success btn-block">Register</button>
+                                            <button type="submit" ng-click="createUser(newUserData); loginSubmit(newUserData)" class="btn btn-primary btn-block">Register</button>
                                             <li role="separator" class="divider"></li>
                                         </form>
                                     </div>
