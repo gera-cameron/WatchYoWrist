@@ -16,7 +16,11 @@ config(['$routeProvider', function($routeProvider) {
   .when('/cart', {
      templateUrl: 'templates/cart.html',
      controller: 'CartCtrl'
-   });
+   })
+   .when('/user', {
+      templateUrl: 'templates/user.html',
+      controller: 'UserCtrl'
+    });
    $routeProvider.otherwise({
         redirectTo: '/'
     });
@@ -49,6 +53,9 @@ controller('AboutCtrl',['$scope','$log','$http', function($scope,$log,$http){
 
     }]).
 controller('CartCtrl',['$scope','$log','$http', function($scope,$log,$http){
+
+    }]).
+controller('UserCtrl',['$scope','$log','$http', function($scope,$log,$http){
 
     }]).
 controller('LoginCtrl',['$scope','$log','$http','$cookies', '$window', function($scope,$log,$http,$cookies,$window){

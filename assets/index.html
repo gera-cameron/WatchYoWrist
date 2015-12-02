@@ -71,8 +71,9 @@
                                             <input type="password" ng-model="userData.password" class="form-control" id="exampleInputPassword1" placeholder="Password">
                                         </div>
                                         <button type="submit" ng-click="loginSubmit(userData)" class="btn btn-success btn-block">Login</button>
+                                        <li role="separator" class="divider"></li>
                                         <div class="alert alert-danger" role="alert" ng-show="message">
-                                          <p>{{message.feedback}}</p>
+                                          <p class="navStyle">{{message.feedback}}</p>
                                         </div>
                                     </form>
                                 </div>
@@ -108,6 +109,11 @@
                         <li ng-if="loggedOn" ng-click="logout()" role="button" style="padding:15px;">
                             <span class="navStyle"> LOGOUT </span>
                         </li>
+                        <li>
+                        <a ng-if="loggedOn" role="button" style="padding:15px;" href="#/user">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                      </li>
                     </ul>
                 </div>
             </div>
