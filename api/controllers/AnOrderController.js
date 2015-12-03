@@ -6,21 +6,8 @@
  */
 
  module.exports = {
-     getCart: function(req, res) {
-         CartService.getCart(function(cart) {
-             res.json(cart);
-         });
-     },
-     addToCart: function(req, res) {
-         var CartVal = (req.body.value) ? req.body.value : undefined;
-         CartService.addToCart(CartVal, function(success) {
-             res.json(success);
-         });
-     },
-     removeFromCart: function(req, res) {
-        var CartVal = (req.body.value) ? req.body.value : undefined;
-         CartService.removeFromCart(CartVal, function(success) {
-             res.json(success);
-         });
-    }
+     checkout : function(req,res){
+       var allParams = req.allParams();
+       
+     }
 };
