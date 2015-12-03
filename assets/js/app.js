@@ -98,56 +98,103 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
     }
     }]).
 controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', function ($scope, $log, $http, $cookies) {
-    $scope.userObject = {};
+                $scope.userObject = {};
 
-    $scope.userObject = $cookies.getObject('user');
+                $scope.userObject = $cookies.getObject('user'); === === =
+                controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
+                    $scope.userObject = $cookies.getObject('user');
+                    $scope.updateSubmit = function (updatedUser) {
+                        $log.debug(updatedUser.id);
+                        $http({
+                            method: 'PUT',
+                            url: '/User/update/updatedUser.id',
+                            params: {
+                                id: updatedUser.id,
+                                name: updatedUser.name,
+                                address: updatedUser.address,
+                                email: updatedUser.email,
+                                password: updatedUser.password
+                            }
+                        }).then(function successCallback(response) {
+                            $cookies.remove('user');
+                            $cookies.putObject('user', response.data[0]);
+                            $window.location.href = "/#/user";
+                            $log.debug(response.data[0]);
+                        }, function errorCallback(response) {
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        });
+                    };
+
+                    $scope.deleteAccount = function (updatedUser) {
+                        $log.debug(updatedUser.id);
+                        $http({
+                            method: 'DELETE',
+                            url: '/User/destroy/' + updatedUser.id,
+                            // params: {
+                            //   id : updatedUser.id,
+                            //   name : updatedUser.name,
+                            //   address : updatedUser.address,
+                            //   email : updatedUser.email,
+                            //   password : updatedUser.password
+                            // }
+                        }).then(function successCallback(response) {
+                            $cookies.remove('user');
+                            $window.location.href = "/";
+                            $scope.$parent.loggedOn = false;
+                            $log.debug(response.data);
+                            $route.reload();
+                        }, function errorCallback(response) {
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        });
+                    };
     }]).
-controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
-    $scope.message = false;
-    $scope.userData = {};
-    $scope.loginSubmit = function (submittedUser) {
-        $scope.message = false;
-        $log.debug(submittedUser);
-        $http({
-            method: 'POST',
-            url: '/login',
-            params: {
-                email: submittedUser.email,
-                password: submittedUser.password
-            }
-        }).then(function successCallback(response) {
-            $cookies.putObject('user', response.data);
-            $window.location.href = "/";
-            $log.debug(response);
-        }, function errorCallback(response) {
-            $scope.message = {
-                feedback: 'Incorrect Username or Password'
-            };
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-    };
+                controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+                    $scope.message = false;
+                    $scope.userData = {};
+                    $scope.loginSubmit = function (submittedUser) {
+                        $scope.message = false;
+                        $log.debug(submittedUser);
+                        $http({
+                            method: 'POST',
+                            url: '/login',
+                            params: {
+                                email: submittedUser.email,
+                                password: submittedUser.password
+                            }
+                        }).then(function successCallback(response) {
+                            $cookies.putObject('user', response.data);
+                            $window.location.href = "/";
+                            $log.debug(response);
+                        }, function errorCallback(response) {
+                            $scope.message = {
+                                feedback: 'Incorrect Username or Password'
+                            };
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        });
+                    };
 }]).
-controller('NewUserCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
-    $scope.newUserData = {};
-    $scope.createUser = function (createdUser) {
-        $log.debug(createdUser);
-        $http({
-            method: 'POST',
-            url: '/User/create',
-            params: {
-                address: createdUser.address,
-                name: createdUser.name,
-                email: createdUser.email,
-                password: createdUser.password,
-                is_staff: false
-            }
-        }).then(function successCallback(response) {
-            $log.debug(response);
-        }, function errorCallback(response) {
-            // called asynchronously if an error occurs
-            // or server returns response with an error status.
-        });
-
-    };
+                controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+                    $scope.newUserData = {};
+                    $scope.createUser = function (createdUser) {
+                        $log.debug(createdUser);
+                        $http({
+                            method: 'POST',
+                            url: '/User/create',
+                            params: {
+                                address: createdUser.address,
+                                name: createdUser.name,
+                                email: createdUser.email,
+                                password: createdUser.password,
+                                is_staff: false
+                            }
+                        }).then(function successCallback(response) {
+                            $log.debug(response);
+                        }, function errorCallback(response) {
+                            // called asynchronously if an error occurs
+                            // or server returns response with an error status.
+                        });
+                    };
 }]);
