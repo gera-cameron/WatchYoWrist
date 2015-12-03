@@ -59,16 +59,6 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $
             return parseFloat(b.price) - parseFloat(a.price);
         });
     };
-    $scope.sortAlphaAZ = function () {
-        $scope.products.sort(function (a, b) {
-            return a.name.localeCompare(b.name.localeCompare);
-        });
-    };
-    $scope.sortAlphaZA = function () {
-        $scope.products.sort(function (a, b) {
-            return b.name.localeCompare(a.name.localeCompare);
-        });
-    };
     $scope.reset = function () {
         $route.reload();
     };
@@ -165,7 +155,7 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
             if(response.data.is_staff){
               $scope.staff = true;
             } else {
-              $scope.staff = false;
+                $scope.staff = false;
             }
             $log.debug(response.data.is_staff);
             $cookies.putObject('user', response.data);
