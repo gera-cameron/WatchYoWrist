@@ -28,7 +28,7 @@
     <div class="container" ng-controller="MainCtrl">
         <h1> WatchYoWrist <small>Watches are Our Service</small> </h1>
         <nav class="navbar navbar-default navbar-fixed-top" data-toggle="collapse" data-target="navbar-collapse">
-            <div class="container-fluid">
+            <div class="container">
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
                         <span class="icon-bar"></span>
@@ -49,16 +49,6 @@
                         </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="search">
-                            <form class="navbar-form" role="search" style="textcolor:black">
-                                <div class="input-group">
-                                    <input type="text" class="form-control" placeholder="Search" name="srch-term" id="srch-term">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default" type="submit"><i class="glyphicon glyphicon-search" style="color:black"></i></button>
-                                    </div>
-                                </div>
-                            </form>
-                        </li>
                         <li class="dropdown dropdown-collapse" ng-if="!loggedOn">
                             <a data-toggle="dropdown" datatarget=".dropdown-collapse">LOGIN<span class="caret"></a>
                             <ul class="dropdown-menu" aria-labelledby="dropdownMenu2" style="padding:8px;">
@@ -115,6 +105,27 @@
                             <a ng-if="loggedOn" role="button" style="padding:15px;" href="#/user">
                                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                             </a>
+                        </li>
+                        <li>
+                            <div class="dropdown" ng-controller="CartCtrl" ng-if="loggedOn" style="padding:15px;">
+                                <a class="dropdown-toggle" role=button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                                <ul class="dropdown-menu" style="width:244px">
+                                    <li ng-repeat="item in items">
+                                        <b class="navStyle">{{item.name}}</b>
+                                        <span class="badge" style="line-height:25px">$ {{item.price}}</span>
+                                        <span class=" glpyhicon glyphicon-remove-circle" style="color:red" ng-click="deleteItem(product)"></span>
+                                    </li>
+                                    <li>Order total:
+                                        <span class="badge" style="line-height:25px">$ {{total}}
+                </span>
+                                    </li>
+                                    <p></p>
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-primary btn-block" href="#" ng-click="clear()">Submit</button>
+                                        <button class="btn btn-danger btn-block" ng-click="clear()">Clear</button>
+                                    </div>
+                                </ul>
+                            </div>
                         </li>
                     </ul>
                 </div>
