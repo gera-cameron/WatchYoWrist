@@ -100,7 +100,7 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
 controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', function ($scope, $log, $http, $cookies) {
                 $scope.userObject = {};
 
-                $scope.userObject = $cookies.getObject('user'); === === =
+                $scope.userObject = $cookies.getObject('user');
                 controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
                     $scope.userObject = $cookies.getObject('user');
                     $scope.updateSubmit = function (updatedUser) {
