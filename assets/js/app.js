@@ -152,8 +152,8 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
                 password: submittedUser.password
             }
         }).then(function successCallback(response) {
-            if(response.data.is_staff){
-              $scope.staff = true;
+            if (response.data.is_staff) {
+                $scope.staff = true;
             } else {
                 $scope.staff = false;
             }
