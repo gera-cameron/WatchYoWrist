@@ -109,21 +109,18 @@
                         <li>
                             <div class="dropdown" ng-controller="CartCtrl" ng-if="loggedOn" style="padding:15px;">
                                 <a class="dropdown-toggle" role=button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey"><span class="glyphicon glyphicon-shopping-cart"></span></a>
-                                <ul class="dropdown-menu" style="width:244px">
+                                <ul class="dropdown-menu" style="width:244px; padding:8px">
                                     <li ng-repeat="item in items">
                                         <b class="navStyle">{{item.name}}</b>
                                         <span class="badge" style="line-height:25px">$ {{item.price}}</span>
-                                        <span class=" glpyhicon glyphicon-remove-circle" style="color:red" ng-click="deleteItem(product)"></span>
+                                        <span class="glyphicon glyphicon-remove-circle" style="color:red" ng-click="deleteItem(product)"></span>
                                     </li>
                                     <li>Order total:
                                         <span class="badge" style="line-height:25px">$ {{total}}
                 </span>
                                     </li>
                                     <p></p>
-                                    <div class="btn-group" role="group">
-                                        <button class="btn btn-primary btn-block" href="#" ng-click="clear()">Submit</button>
-                                        <button class="btn btn-danger btn-block" ng-click="clear()">Clear</button>
-                                    </div>
+                                    <button class="btn btn-primary btn-block" href="#" ng-click="clear()">Submit</button>
                                 </ul>
                             </div>
                         </li>
