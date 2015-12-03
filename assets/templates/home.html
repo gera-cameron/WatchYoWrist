@@ -50,6 +50,7 @@
                             <div class="container ">
                                 <p class="navStyle "><b>Description: </b><i>{{product.description}}</i></p>
                                 <p class="navStyle "><b>Price: $</b><i>{{product.price}}</i></p>
+                                <p class="navStyle" ng-if="staff"><b>Quantity: </b>{{product.stock}}</p>
                             </div>
                         </div>
                     </li>

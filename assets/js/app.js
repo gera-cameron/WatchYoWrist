@@ -78,13 +78,16 @@ controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $htt
 
     }]).
 controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, $log, $http, $window) {
-    $scope.items = [{}];
+    $scope.items = [];
     $scope.total = 0;
 
+    $log.debug("cartctrl called");
 
     $scope.addItem = function (product) {
         $scope.items.push(product);
         $scope.total = $scope.total + product.price;
+        $log.debug("additem called, product is " + product.name + " items is size " + $scope.items.length);
+
     };
     $scope.deleteItem = function (product) {
         var index = $scope.items.indexOf(product);
@@ -96,8 +99,7 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
     $scope.clear = function () {
         $scope.items = [];
     };
-    }]).
-controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
+            }]).controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
     $scope.userObject = $cookies.getObject('user');
     $scope.updateSubmit = function (updatedUser) {
         $log.debug(updatedUser.id);
@@ -145,8 +147,7 @@ controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$rout
             // or server returns response with an error status.
         });
     };
-}]).
-controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+}]).controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
     $scope.message = false;
     $scope.userData = {};
     $scope.staff = false;
@@ -177,8 +178,7 @@ controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', funct
             // or server returns response with an error status.
         });
     };
-}]).
-controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+}]).controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
     $scope.newUserData = {};
     $scope.createUser = function (createdUser) {
         $log.debug(createdUser);
