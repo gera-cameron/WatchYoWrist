@@ -149,6 +149,7 @@ controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$rout
 controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
     $scope.message = false;
     $scope.userData = {};
+    $scope.staff = false;
     $scope.loginSubmit = function (submittedUser) {
         $scope.message = false;
         $log.debug(submittedUser);
@@ -162,6 +163,11 @@ controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', funct
         }).then(function successCallback(response) {
             $cookies.putObject('user', response.data);
             $window.location.href = "/";
+            if(response.is_staff){
+              $scope.staff = true;
+            } else {
+              $scope.staff = false;
+            }
             $log.debug(response);
         }, function errorCallback(response) {
             $scope.message = {
