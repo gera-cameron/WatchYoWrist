@@ -99,7 +99,7 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
     $scope.clear = function () {
         $scope.items = [];
     };
-            }]).controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
+}]).controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
     $scope.userObject = $cookies.getObject('user');
     $scope.updateSubmit = function (updatedUser) {
         $log.debug(updatedUser.id);
@@ -162,14 +162,14 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
                 password: submittedUser.password
             }
         }).then(function successCallback(response) {
-            $cookies.putObject('user', response.data);
-            $window.location.href = "/";
-            if(response.is_staff){
+            if(response.data.is_staff){
               $scope.staff = true;
             } else {
               $scope.staff = false;
             }
-            $log.debug(response);
+            $log.debug(response.data.is_staff);
+            $cookies.putObject('user', response.data);
+            $window.location.href = "/";
         }, function errorCallback(response) {
             $scope.message = {
                 feedback: 'Incorrect Username or Password'
