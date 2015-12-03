@@ -10,11 +10,12 @@ module.exports = {
   connection: 'mysql',
   migrate: 'safe',
   attributes: {
-    id : {type:'string'},
+    id : {type:'integer', primaryKey: true, unique: true},
     address : {type:'string'},
     name : {type:'string'},
     password : {type:'string'},
     email : {type:'string'},
     is_staff : {type:'boolean'}
-  }
+  },
+  autoPK:false
 };

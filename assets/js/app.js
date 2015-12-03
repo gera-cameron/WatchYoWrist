@@ -26,6 +26,7 @@ config(['$routeProvider', function($routeProvider) {
     });
 }]).
 controller('MainCtrl',['$scope','$log','$http','$cookies','$window', function($scope,$log,$http,$cookies,$window){
+
       var userCookie = $cookies.getObject('user');
       $log.info(userCookie);
       $scope.loggedOn = false;
@@ -55,10 +56,55 @@ controller('AboutCtrl',['$scope','$log','$http', function($scope,$log,$http){
 controller('CartCtrl',['$scope','$log','$http', function($scope,$log,$http){
 
     }]).
-controller('UserCtrl',['$scope','$log','$http', '$cookies',function($scope,$log,$http,$cookies){
-    $scope.userObject = {};
-
+controller('UserCtrl',['$scope','$log','$http', '$cookies','$window','$route', function($scope,$log,$http,$cookies,$window, $route){
     $scope.userObject=$cookies.getObject('user');
+    $scope.updateSubmit = function(updatedUser){
+      $log.debug(updatedUser.id);
+      $http({
+        method: 'PUT',
+        url: '/User/update/updatedUser.id',
+        params: {
+          id : updatedUser.id,
+          name : updatedUser.name,
+          address : updatedUser.address,
+          email : updatedUser.email,
+          password : updatedUser.password
+        }
+      }).then(function successCallback(response) {
+          $cookies.remove('user');
+          $cookies.putObject('user',response.data[0]);
+          $window.location.href = "/#/user";
+          $log.debug(response.data[0]);
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+    };
+
+    $scope.deleteAccount = function(updatedUser){
+      $log.debug(updatedUser.id);
+      $http({
+        method: 'DELETE',
+        url: '/User/destroy/' + updatedUser.id,
+        // params: {
+        //   id : updatedUser.id,
+        //   name : updatedUser.name,
+        //   address : updatedUser.address,
+        //   email : updatedUser.email,
+        //   password : updatedUser.password
+        // }
+      }).then(function successCallback(response) {
+          $cookies.remove('user');
+          $window.location.href = "/";
+          $scope.$parent.loggedOn=false;
+          $log.debug(response.data);
+          $route.reload();
+      }, function errorCallback(response) {
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+      });
+    };
+
     }]).
 controller('LoginCtrl',['$scope','$log','$http','$cookies', '$window', function($scope,$log,$http,$cookies,$window){
       $scope.message = false;
@@ -84,7 +130,7 @@ controller('LoginCtrl',['$scope','$log','$http','$cookies', '$window', function(
         });
       };
 }]).
-controller('NewUserCtrl',['$scope','$log','$http', function($scope,$log,$http){
+controller('NewUserCtrl',['$scope','$log','$http', '$cookies', '$window',function($scope,$log,$http,$cookies,$window){
   $scope.newUserData = {};
   $scope.createUser = function(createdUser){
     $log.debug(createdUser);
