@@ -29,12 +29,14 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     $scope.products = {};
     $scope.items = [];
     $scope.total = 0;
+    $scope.enabled = false;
 
     $log.debug("cartctrl called");
 
     $scope.addItem = function (product) {
         $scope.items.push(product);
         $scope.total = $scope.total + product.price;
+        $scope.enabled = true;
         $log.debug("additem called, product is " + product.name + " items is size " + $scope.items.length);
         $log.debug("additem called, Total is " + $scope.total);
 
@@ -44,11 +46,14 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
         if (index > -1) {
             $scope.total = $scope.total - product.price;
             $scope.items.splice(index, 1);
+            if ($scope.items.length <= 0)
+                $scope.enabled = false;
         }
     };
     $scope.clear = function () {
         $scope.items = [];
         $scope.total = 0;
+        $scope.enabled = false;
     };
 
     var userCookie = $cookies.getObject('user');
@@ -156,7 +161,7 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
             }
         }).then(function successCallback(response) {
             $cookies.putObject('user', response.data);
-            if(response.data.is_staff) {
+            if (response.data.is_staff) {
                 $scope.staff = true;
             } else {
                 $scope.staff = false;
