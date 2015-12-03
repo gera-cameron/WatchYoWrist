@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('watchYoWrist', [
-  'ngRoute', 'ngCookies'
+  'ngRoute', 'ngCookies','angular-toArrayFilter'
 ]).
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -77,6 +77,7 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
         $scope.items.push(product);
         $scope.total = $scope.total + product.price;
         $log.debug("additem called, product is " + product.name + " items is size " + $scope.items.length);
+        $log.debug("additem called, Total is " + $scope.total);
 
     };
     $scope.deleteItem = function (product) {

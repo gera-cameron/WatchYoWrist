@@ -21,7 +21,7 @@
                     <li class="list-group-item clearfix search">
                         <form class="navbar-form" role="search" style="textcolor:black">
                             <div class="input-group" style="float:right">
-                                <input type="text" ng-model="srchtext" class="form-control" placeholder="Search" name="srch-term" id="srch-term" style="width:256px">
+                                <input type="text" ng-model="search" class="form-control" placeholder="Search" name="srch-term" id="srch-term" style="width:256px">
                                 <div class="input-group-btn">
                                     <button class="btn btn-default" type="submit">
                                         <i class="glyphicon glyphicon-search" style="color:black"></i></button>
@@ -39,7 +39,7 @@
                             </div>
                         </form>
                     </li>
-                    <li class="list-group-item clearfix" ng-repeat="product in products | filter:srchtext">
+                    <li class="list-group-item clearfix" ng-repeat="product in products | toArray:false | filter:search">
                         <b class="navStyle ">{{product.name}}</b>
                         <div class="btn-group " role="group " style="float:right " aria-label="... ">
                             <button class="btn btn-info " type="button " ng-init="product.toggle " ng-click="product.toggle=! product.toggle "><i class="glyphicon glyphicon-info-sign "></i></button>
