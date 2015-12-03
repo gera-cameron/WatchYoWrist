@@ -108,10 +108,10 @@
                             </a>
                         </li>
                         <li>
-                            <div class="dropdown" ng-controller="CartCtrl" ng-if="loggedOn" style="padding:15px;">
+                            <div class="dropdown" ng-if="loggedOn" style="padding:15px;">
                                 <a class="dropdown-toggle" role=button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey">{{items.length}} <span class="glyphicon glyphicon-shopping-cart"></span></a>
                                 <ul class="dropdown-menu list-group" style="width:244px; padding:8px">
-                                    <li class="dropdown-item list-group-item" ng-repeat="item in items">
+                                    <li class="dropdown-item list-group-item" ng-repeat="item in items | toArray:true">
                                         <b class="navStyle">{{item.name}}</b>
                                         <span class="badge" style="line-height:25px; float:right">$ {{item.price}}</span>
                                         <span class="glyphicon glyphicon-trash" style="color:red" ng-click="deleteItem(product)"></span>

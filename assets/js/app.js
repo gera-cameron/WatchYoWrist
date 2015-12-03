@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('watchYoWrist', [
-  'ngRoute', 'ngCookies','angular-toArrayFilter'
+  'ngRoute', 'ngCookies', 'angular-toArrayFilter'
 ]).
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -26,6 +26,31 @@ config(['$routeProvider', function ($routeProvider) {
     });
 }]).
 controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+    $scope.products = {};
+    $scope.items = [];
+    $scope.total = 0;
+
+    $log.debug("cartctrl called");
+
+    $scope.addItem = function (product) {
+        $scope.items.push(product);
+        $scope.total = $scope.total + product.price;
+        $log.debug("additem called, product is " + product.name + " items is size " + $scope.items.length);
+        $log.debug("additem called, Total is " + $scope.total);
+
+    };
+    $scope.deleteItem = function (product) {
+        var index = $scope.items.indexOf(product);
+        if (index > -1) {
+            $scope.total = $scope.total - product.price;
+            $scope.items.splice(index, 1);
+        }
+    };
+    $scope.clear = function () {
+        $scope.items = [];
+        $scope.total = 0;
+    };
+
     var userCookie = $cookies.getObject('user');
     $log.info(userCookie);
     $scope.loggedOn = false;
@@ -39,8 +64,6 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
 
     }]).
 controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $log, $http, $route) {
-    $scope.products = {};
-
     $http({
         method: 'GET',
         url: '/Product',
@@ -68,28 +91,7 @@ controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $htt
 
     }]).
 controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, $log, $http, $window) {
-    $scope.items = [];
-    $scope.total = 0;
 
-    $log.debug("cartctrl called");
-
-    $scope.addItem = function (product) {
-        $scope.items.push(product);
-        $scope.total = $scope.total + product.price;
-        $log.debug("additem called, product is " + product.name + " items is size " + $scope.items.length);
-        $log.debug("additem called, Total is " + $scope.total);
-
-    };
-    $scope.deleteItem = function (product) {
-        var index = $scope.items.indexOf(product);
-        if (index > -1) {
-            $scope.total = $scope.total - product.price;
-            $scope.items.splice(index, 1);
-        }
-    };
-    $scope.clear = function () {
-        $scope.items = [];
-    };
 }]).controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
     $scope.userObject = $cookies.getObject('user');
     $scope.updateSubmit = function (updatedUser) {
