@@ -47,9 +47,11 @@
                         </div>
                         <div ng-show="product.toggle">
                             <div class="container ">
-                                <p class="navStyle "><b>Description: </b><i>{{product.description}}</i></p>
-                                <p class="navStyle "><b>Price: $</b><i>{{product.price}}</i></p>
-                                <p class="navStyle" ng-if="staff"><b>Quantity: </b>{{product.stock}}</p>
+                              <ul>
+                                <li class="navStyle "><b>Description: </b><i>{{product.description}}</i></li>
+                                <li class="navStyle "><b>Price: $</b><i>{{product.price}}</i></li>
+                                <li class="navStyle" ng-if="staff"><b>Quantity: </b>{{product.stock}}</li>
+                              </ul>
                             </div>
                         </div>
                     </li>
