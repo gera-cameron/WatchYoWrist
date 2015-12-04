@@ -77,7 +77,6 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
 controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function ($scope, $log, $http, $route, $window) {
     $scope.products = {};
 
-
     $http({
         method: 'GET',
         url: '/Product',
