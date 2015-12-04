@@ -84,7 +84,6 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
     }).success(function (response) {
         $log.debug(response);
         $scope.products = response;
-        $log.debug(response.active);
     });
 
     $scope.checkUninterested = function (product) {
