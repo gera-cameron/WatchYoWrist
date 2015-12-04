@@ -107,6 +107,15 @@ controller('CartCtrl', ['$scope', '$log', '$http', '$window', function ($scope, 
 
   }]).
 controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
+    $scope.users = {};
+
+    $http({
+        method: 'GET',
+        url: '/User',
+    }).success(function (response) {
+        $log.debug(response);
+        $scope.users = response;
+    });
     $scope.userObject = $cookies.getObject('user');
     $scope.updateSubmit = function (updatedUser) {
         $log.debug(updatedUser.id);
