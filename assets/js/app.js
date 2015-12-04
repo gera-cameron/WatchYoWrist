@@ -279,4 +279,25 @@ controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$rout
             // or server returns response with an error status.
         });
     };
+}]).controller('NewProductCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+    $scope.newProductData = {};
+    $scope.createProduct = function (createdProduct) {
+        $log.debug(createdProduct);
+        $http({
+            method: 'POST',
+            url: '/Product/create',
+            params: {
+                address: createdProduct.address,
+                name: createdProduct.name,
+                email: createdProduct.email,
+                password: createdProduct.password,
+                is_staff: false
+            }
+        }).then(function successCallback(response) {
+            $log.debug(response);
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    };
 }]);
