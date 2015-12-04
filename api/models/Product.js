@@ -25,7 +25,7 @@ module.exports = {
   connection: 'mysql',
   migrate: 'safe',
   attributes: {
-    id : {type:'INT'},
+    id : {type:'integer', primaryKey: true, unique: true},
     name : {type:'CHAR'},
     price : {type:'REAL'},
     stock : {type:'INT'},
