@@ -62,7 +62,7 @@
                                             <div class="alert alert-danger" style="width:90%" role="alert" ng-show="checkUninterested(product)">
                                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                 <span class="sr-only">Error:</span>Product is not interesting.
-                                                <button class="btn btn-primary" disabled="disabled" style="float:right">Delete</button>
+                                                <button class="btn btn-primary" ng-click=deleteProduct(product) style="float:right">Delete</button>
                                             </div>
                                         </li>
                                     </ul>
@@ -122,8 +122,8 @@
                             <input type="integer" class="form-control" ng-model="product.supplier">
                         </div>
                         <div class="checkbox" style="color:whitesmoke">
-                        <label>
-                            <input type="checkbox" ng-model="product.active" value="true"> Product Active</label>
+                            <label>
+                                <input type="checkbox" ng-model="product.active" value="true"> Product Active</label>
                         </div>
                         <button type="submit" class="btn btn-primary" ng-click="createProduct(product)">Add Product</button>
                     </form>

@@ -93,7 +93,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
 
         //$log.debug("checkInterested called for product " + product.id + ": current date is " + new Date() + ", date is " + date + ", difference is " + (new Date() - date));
 
-        if ((new Date() - date) >= (1000 * 60 * 60 * 24 * 30))
+        if ((new Date() - date) >= (1000 * 60 * 60 * 24 * 30 /* month in millis */ ))
             return true;
         else
             return false;
@@ -316,7 +316,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             // or server returns response with an error status.
         });
     };
-}]).controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route',function ($scope, $log, $http, $cookies, $window,$route) {
+}]).controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
     $scope.newUserData = {};
     $scope.createUser = function (createdUser) {
         $log.debug(createdUser);
@@ -340,7 +340,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             // or server returns response with an error status.
         });
     };
-}]).controller('NewProductCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route',function ($scope, $log, $http, $cookies, $window,$route) {
+}]).controller('NewProductCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
     $scope.newProductData = {};
     $scope.createProduct = function (createdProduct) {
         $log.debug(createdProduct);
