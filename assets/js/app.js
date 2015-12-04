@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('watchYoWrist', [
-  'ngRoute', 'ngCookies','angular-toArrayFilter'
+  'ngRoute', 'ngCookies', 'angular-toArrayFilter'
 ]).
 config(['$routeProvider', function ($routeProvider) {
     $routeProvider
@@ -43,6 +43,7 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     };
     $scope.deleteItem = function (product) {
         var index = $scope.items.indexOf(product);
+        $log.debug("deleteitem called, product is " + product.name);
         if (index > -1) {
             $scope.total = $scope.total - product.price;
             $scope.items.splice(index, 1);
@@ -62,7 +63,7 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     $scope.staff = false;
     if (userCookie) {
         $scope.loggedOn = true;
-        if(userCookie.is_staff) {
+        if (userCookie.is_staff) {
             $scope.staff = true;
         }
     }
