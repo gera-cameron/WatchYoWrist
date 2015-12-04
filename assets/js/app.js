@@ -57,6 +57,12 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
         $scope.enabled = false;
     };
 
+    $scope.checkout = function () {
+        while (items.length > 0) {
+            var t = items.pop();
+        }
+    };
+
     var userCookie = $cookies.getObject('user');
     $log.info(userCookie);
     $scope.loggedOn = false;
