@@ -43,7 +43,7 @@
                             <b class="navStyle ">{{product.name}}</b>
                             <div class="btn-group" role="group " style="float:right " aria-label="... ">
                                 <button class="btn btn-info " type="button " ng-init="product.toggle " ng-click="product.toggle=! product.toggle "><i class="glyphicon glyphicon-info-sign "></i></button>
-                                <button class="btn btn-success " ng-if="!staff" ng-click="addItem(product) " ng-disabled="!loggedOn" type="button ">+<i class="glyphicon glyphicon-shopping-cart "></i></button>
+                                <button class="btn btn-success " ng-if="!staff" ng-click="addItem(product) " ng-disabled="!loggedOn || !product.active" type="button ">+<i class="glyphicon glyphicon-shopping-cart "></i></button>
                                 <button class="btn btn-success " ng-if="staff" type="button " ng-init="product.toggle1 " ng-click="product.toggle1=! product.toggle1 "><i class="glyphicon glyphicon-pencil"></i></button>
                                 <button class="btn btn-danger " ng-if="staff" ng-click="deleteProduct(product)" type="button "><i class="glyphicon glyphicon-trash "></i></button>
 
@@ -102,24 +102,28 @@
                     </div>
                     <form ng-controller="NewProductCtrl">
                         <div class="form-group" style="color:whitesmoke">
-                            <label for="exampleInputName1">Name</label>
-                            <input type="text" class="form-control" id="exampleInputName1" ng-model="product.name">
+                            <label>Name</label>
+                            <input type="text" class="form-control" ng-model="product.name">
                         </div>
                         <div class="form-group" style="color:whitesmoke">
-                            <label for="exampleInputAddress1">Description</label>
-                            <input type="text" class="form-control" id="exampleInputAddress1" ng-model="product.description">
+                            <label>Description</label>
+                            <input type="text" class="form-control" ng-model="product.description">
                         </div>
                         <div class="form-group" style="color:whitesmoke">
-                            <label for="exampleInputEmail1">Price</label>
-                            <input type="integer" class="form-control" id="exampleInputEmail1" ng-model="product.price">
+                            <label>Price</label>
+                            <input type="integer" class="form-control" ng-model="product.price">
                         </div>
                         <div class="form-group" style="color:whitesmoke">
-                            <label for="exampleInputPassword1">Stock</label>
-                            <input type="integer" class="form-control" id="exampleInputPassword1" ng-model="product.stock">
+                            <label>Stock</label>
+                            <input type="integer" class="form-control" ng-model="product.stock">
                         </div>
                         <div class="form-group" style="color:whitesmoke">
-                            <label for="exampleInputPassword1">Supplier ID</label>
+                            <label>Supplier ID</label>
                             <input type="integer" class="form-control" ng-model="product.supplier">
+                        </div>
+                        <div class="checkbox" style="color:whitesmoke">
+                        <label>
+                            <input type="checkbox" ng-model="product.active" value="true"> Product Active</label>
                         </div>
                         <button type="submit" class="btn btn-primary" ng-click="createProduct(product)">Add Product</button>
                     </form>

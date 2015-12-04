@@ -15,9 +15,15 @@ module.exports = {
     var productStock = sentParamsObj.stock;
     var productDescription = sentParamsObj.description;
     var productSupplier = sentParamsObj.supplier;
+		var productActive = true;
+
+		if(productStock <= 0){
+			productActive = false;
+		}
     sails.log.verbose("productId is", productId);
     Product.update(productId, {name:productName, price:productPrice, stock:productStock,
-      description:productDescription,suppler:productSupplier}).then(function(updatedProduct){
+      description:productDescription,suppler:productSupplier,active:productActive})
+			.then(function(updatedProduct){
         sails.log.verbose("Updated Product", updatedProduct);
         return res.ok(updatedProduct);
       }).catch(function(err){

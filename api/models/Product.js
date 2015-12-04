@@ -29,6 +29,7 @@ module.exports = {
     name : {type:'text'},
     price : {type:'integer'},
     stock : {type:'integer'},
+    active : {type: 'boolean'},
     description : {type:'text'},
     supplier: {type:'integer'}
   }

@@ -77,12 +77,14 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
 controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function ($scope, $log, $http, $route, $window) {
     $scope.products = {};
 
+
     $http({
         method: 'GET',
         url: '/Product',
     }).success(function (response) {
         $log.debug(response);
         $scope.products = response;
+        $log.debug(response.active);
     });
 
     $scope.checkUninterested = function (product) {
@@ -113,7 +115,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
         }).then(function successCallback(response) {
             $window.location.href = "/#/";
             $log.debug(response.data[0]);
-            //$route.reload();
+            $route.reload();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
@@ -314,7 +316,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             // or server returns response with an error status.
         });
     };
-}]).controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+}]).controller('NewUserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route',function ($scope, $log, $http, $cookies, $window,$route) {
     $scope.newUserData = {};
     $scope.createUser = function (createdUser) {
         $log.debug(createdUser);
@@ -330,12 +332,15 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             }
         }).then(function successCallback(response) {
             $log.debug(response);
+            $window.location.href = "/";
+            $route.reload();
+            $window.alert = "Please sign in now.";
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
         });
     };
-}]).controller('NewProductCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
+}]).controller('NewProductCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route',function ($scope, $log, $http, $cookies, $window,$route) {
     $scope.newProductData = {};
     $scope.createProduct = function (createdProduct) {
         $log.debug(createdProduct);
@@ -346,11 +351,14 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
                 name: createdProduct.name,
                 price: createdProduct.price,
                 stock: createdProduct.stock,
-                description: createdProduct.stock,
+                description: createdProduct.description,
                 supplier: createdProduct.supplier,
+                active: true
             }
         }).then(function successCallback(response) {
             $log.debug(response);
+            $window.location.href = "/";
+            $route.reload();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
             // or server returns response with an error status.
