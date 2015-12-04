@@ -96,69 +96,68 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $
         });
     };
     $scope.reset = function () {
-        $route.reload();
+        $scope.products.sort(function (a, b) {
+            return parseFloat(b.id) - parseFloat(a.id);
+        });
     };
 
-    }]).
-controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
+            }]).controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
 
-    }]).
-controller('CartCtrl', ['$scope', '$log', '$http', '$window','$route', function ($scope, $log, $http, $window,$route) {
-  $scope.orders = {};
+    }]).controller('CartCtrl', ['$scope', '$log', '$http', '$window', '$route', function ($scope, $log, $http, $window, $route) {
+    $scope.orders = {};
 
-  $http({
-      method: 'GET',
-      url: '/AnOrder',
-  }).success(function (response) {
-      $log.debug(response);
-      $scope.orders = response;
-  });
-  $scope.updateSubmit = function (updatedOrder) {
-      $log.debug(updatedOrder.id);
-      $http({
-          method: 'PUT',
-          url: '/AnOrder/update/updatedOrder.id',
-          params: {
-              id: updatedOrder.id,
-              cur_user: updatedOrder.cur_user,
-              cur_product: updatedOrder.cur_product,
-              quantity: updatedOrder.quantity,
-              paid: updatedOrder.paid,
-              date_bought: updatedOrder.date_bought
-          }
-      }).then(function successCallback(response) {
-          $window.location.href = "/#/cart";
-          $log.debug(response.data[0]);
-          //$route.reload();
-      }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-      });
-  };
+    $http({
+        method: 'GET',
+        url: '/AnOrder',
+    }).success(function (response) {
+        $log.debug(response);
+        $scope.orders = response;
+    });
+    $scope.updateSubmit = function (updatedOrder) {
+        $log.debug(updatedOrder.id);
+        $http({
+            method: 'PUT',
+            url: '/AnOrder/update/updatedOrder.id',
+            params: {
+                id: updatedOrder.id,
+                cur_user: updatedOrder.cur_user,
+                cur_product: updatedOrder.cur_product,
+                quantity: updatedOrder.quantity,
+                paid: updatedOrder.paid,
+                date_bought: updatedOrder.date_bought
+            }
+        }).then(function successCallback(response) {
+            $window.location.href = "/#/cart";
+            $log.debug(response.data[0]);
+            //$route.reload();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    };
 
-  $scope.deleteOrder = function (updatedOrder) {
-      $log.debug(updatedOrder.id);
-      $http({
-          method: 'DELETE',
-          url: '/AnOrder/destroy/' + updatedOrder.id,
-          // params: {
-          //   id : updatedUser.id,
-          //   name : updatedUser.name,
-          //   address : updatedUser.address,
-          //   email : updatedUser.email,
-          //   password : updatedUser.password
-          // }
-      }).then(function successCallback(response) {
-          $window.location.href = "/#/cart";
-          $log.debug(response.data);
-          $route.reload();
-      }, function errorCallback(response) {
-          // called asynchronously if an error occurs
-          // or server returns response with an error status.
-      });
-  };
-  }]).
-controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
+    $scope.deleteOrder = function (updatedOrder) {
+        $log.debug(updatedOrder.id);
+        $http({
+            method: 'DELETE',
+            url: '/AnOrder/destroy/' + updatedOrder.id,
+            // params: {
+            //   id : updatedUser.id,
+            //   name : updatedUser.name,
+            //   address : updatedUser.address,
+            //   email : updatedUser.email,
+            //   password : updatedUser.password
+            // }
+        }).then(function successCallback(response) {
+            $window.location.href = "/#/cart";
+            $log.debug(response.data);
+            $route.reload();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    };
+  }]).controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$route', function ($scope, $log, $http, $cookies, $window, $route) {
     $scope.users = {};
 
     $http({
