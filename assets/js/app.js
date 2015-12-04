@@ -58,9 +58,19 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     };
 
     $scope.checkout = function () {
-        while (items.length > 0) {
-            var t = items.pop();
-        }
+        while ($scope.items.length > 0) {
+            var t = $scope.items.pop();
+            $http({
+                method: 'POST',
+                url: '/AnOrder/create',
+                params: {
+                    cur_product: t.cur_product,
+                    cur_user: t.cur_user,
+                    paid: t.paid,
+                    quantity: t.quantity
+                }
+        });
+      }
     };
 
     var userCookie = $cookies.getObject('user');
