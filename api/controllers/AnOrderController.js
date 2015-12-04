@@ -28,7 +28,7 @@
          }).catch(function(err){
            return res.serverError(err);
          });
-       sails.log.verbose("order info is ", orderAddress);
+       sails.log.verbose("order info is ", orderUser);
      },
 
      delete: function(req,res){

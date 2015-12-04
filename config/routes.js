@@ -33,12 +33,20 @@ module.exports.routes = {
      ***************************************************************************/
 
     'post /login': 'LoginController.login',
-    'put /User/update/:id':'UserController.update',
-    'get /Product': 'ProductController.find',
+
     'get /User': 'UserController.find',
+    'put /User/update/:id':'UserController.update',
+    'delete /User/destroy/:id':'UserController.delete',
+
+    'get /Product': 'ProductController.find',
+    'put /Product/update/:id':'ProductController.update',
+    'delete /Product/destroy/:id':'ProductController.delete',
+
     'get /AnOrder': 'AnOrderController.find',
     'put /AnOrder/update/:id': 'AnOrderController.update',
-    'delete /User/destroy/:id':'UserController.delete',
+    'delete /AnOrder/destroy/:id':'AnOrderController.delete',
+
+
 
     /***************************************************************************
      *                                                                          *

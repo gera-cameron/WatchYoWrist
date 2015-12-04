@@ -74,7 +74,7 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     };
 
     }]).
-controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $log, $http, $route) {
+controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function ($scope, $log, $http, $route,$window) {
     $scope.products = {};
 
     $http({
@@ -84,6 +84,51 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $
         $log.debug(response);
         $scope.products = response;
     });
+
+    $scope.updateSubmit = function (updatedProduct) {
+        $log.debug(updatedProduct.id);
+        $http({
+            method: 'PUT',
+            url: '/Product/update/updatedProduct.id',
+            params: {
+                id: updatedProduct.id,
+                name: updatedProduct.name,
+                price: updatedProduct.price,
+                stock: updatedProduct.stock,
+                description: updatedProduct.description,
+                supplier: updatedProduct.supplier
+            }
+        }).then(function successCallback(response) {
+            $window.location.href = "/#/";
+            $log.debug(response.data[0]);
+            //$route.reload();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    };
+
+    $scope.deleteProduct = function (updatedProduct) {
+        $log.debug(updatedProduct.id);
+        $http({
+            method: 'DELETE',
+            url: '/Product/destroy/' + updatedProduct.id,
+            // params: {
+            //   id : updatedUser.id,
+            //   name : updatedUser.name,
+            //   address : updatedUser.address,
+            //   email : updatedUser.email,
+            //   password : updatedUser.password
+            // }
+        }).then(function successCallback(response) {
+            $window.location.href = "/#/";
+            $log.debug(response.data);
+            $route.reload();
+        }, function errorCallback(response) {
+            // called asynchronously if an error occurs
+            // or server returns response with an error status.
+        });
+    };
 
     $scope.sortPriceLowHigh = function () {
         $scope.products.sort(function (a, b) {
@@ -286,11 +331,11 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $
             method: 'POST',
             url: '/Product/create',
             params: {
-                address: createdProduct.address,
                 name: createdProduct.name,
-                email: createdProduct.email,
-                password: createdProduct.password,
-                is_staff: false
+                price: createdProduct.price,
+                stock: createdProduct.stock,
+                description: createdProduct.stock,
+                supplier: createdProduct.supplier,
             }
         }).then(function successCallback(response) {
             $log.debug(response);

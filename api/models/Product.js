@@ -26,10 +26,10 @@ module.exports = {
   migrate: 'safe',
   attributes: {
     id : {type:'integer', primaryKey: true, unique: true},
-    name : {type:'CHAR'},
-    price : {type:'REAL'},
-    stock : {type:'INT'},
-    description : {type:'CHAR'},
-    supplier: {type:'INT'}
+    name : {type:'text'},
+    price : {type:'integer'},
+    stock : {type:'integer'},
+    description : {type:'text'},
+    supplier: {type:'integer'}
   }
 };
