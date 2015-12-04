@@ -14,9 +14,10 @@ module.exports = {
     var userAddress = sentParamsObj.address;
     var userEmail = sentParamsObj.email;
     var userPassword = sentParamsObj.password;
+    var userIsStaff = sentParamsObj.is_staff;
     sails.log.verbose("userId is", userId);
     User.update({email: userEmail}, {name:userName, address:userAddress, email:userEmail,
-      password:userPassword}).then(function(updatedUser){
+      password:userPassword,is_staff:userIsStaff}).then(function(updatedUser){
         sails.log.verbose("Updated User", updatedUser);
         return res.ok(updatedUser);
       }).catch(function(err){

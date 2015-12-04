@@ -21,6 +21,7 @@ h3,
 a,
 .page-header,
 .form-control,
+.checkbox,
 .btn {
     color: whitesmoke;
     font-family: 'Raleway', sans-serif;
@@ -39,9 +40,10 @@ a,
     color: #777;
     font-family: 'Raleway', sans-serif;
 }
-.infoStyle {
+.infoStyle,
+.form-group {
     color: #777;
-    font-size: medium;
+    font-size: small;
     font-family: 'Raleway', sans-serif;
 }
 

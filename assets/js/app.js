@@ -127,7 +127,8 @@ controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$rout
                 name: updatedUser.name,
                 address: updatedUser.address,
                 email: updatedUser.email,
-                password: updatedUser.password
+                password: updatedUser.password,
+                is_staff: updatedUser.is_staff
             }
         }).then(function successCallback(response) {
             $cookies.remove('user');

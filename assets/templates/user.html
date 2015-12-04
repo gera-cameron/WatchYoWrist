@@ -26,24 +26,52 @@
             <button type="submit" class="btn btn-danger" ng-click="deleteAccount(userObject)">Delete Account</button>
         </form>
     </div>
-      <div class="col-md-6 col-md-offset-3">
+      <div class="col-md-6 col-md-offset-3" ng-if="staff">
         <div class="page-header">
             <h2>Manage Users</h2>
         </div>
-          <li class="list-group-item clearfix" ng-if="staff" ng-repeat="user in users| toArray:false | filter:search">
+          <li class="list-group-item clearfix"  ng-repeat="user in users| toArray:false | filter:search">
               <b class="navStyle ">{{user.name}}</b>
               <div class="btn-group" role="group " style="float:right " aria-label="... ">
-                  <button class="btn btn-info " type="button " ng-init="user.toggle " ng-click="user.toggle=! user.toggle "><i class="glyphicon glyphicon-info-sign "></i></button>
-                  <button class="btn btn-success " ng-click="" type="button "><i class="glyphicon glyphicon-pencil "></i></button>
+                  <button class="btn btn-info " type="button " ng-init="user.toggle " ng-click="user.toggle=! user.toggle " ng-if="!user.toggle1"><i class="glyphicon glyphicon-info-sign "></i></button>
+                  <button class="btn btn-success " type="button "  ng-init="user.toggle1 " ng-click="user.toggle1=! user.toggle1 " ng-if="!user.toggle"><i class="glyphicon glyphicon-pencil "></i></button>
                   <button class="btn btn-danger "  ng-click="deleteAccount(user)" type="button "><i class="glyphicon glyphicon-trash "></i></button>
 
               </div>
               <div ng-show="user.toggle">
                   <div class="container " >
                       <ul>
+                          <li class="infoStyle " ><b>Name: </b><i>{{user.name}}</i></li>
                           <li class="infoStyle " ><b>Address: </b><i>{{user.address}}</i></li>
+                          <li class="infoStyle " ><b>Email: </b><i>{{user.email}}</i></li>
+                          <li class="infoStyle " ><b>Password: </b><i>{{user.password}}</i></li>
                       </ul>
                   </div>
+              </div>
+              <div ng-show="user.toggle1">
+                    <form ng-controller="UserCtrl">
+                        <div class="form-group" style="color:#777">
+                            <label for="exampleInputName1">Name</label>
+                            <input type="text" class="form-control" id="exampleInputName1" ng-model="user.name">
+                        </div>
+                        <div class="form-group" style="color:#777">
+                            <label for="exampleInputAddress1">Address</label>
+                            <input type="address" class="form-control" id="exampleInputAddress1" ng-model="user.address">
+                        </div>
+                        <div class="form-group" style="color:#777">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" ng-model="user.email">
+                        </div>
+                        <div class="form-group" style="color:#777">
+                            <label for="exampleInputPassword1">Password</label>
+                            <input type="password" class="form-control" id="exampleInputPassword1" ng-model="user.password">
+                        </div>
+                        <div class="checkbox" style="color:#777">
+                        <label>
+                            <input type="checkbox" ng-model="user.is_staff" value="false"> Is Staff</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" ng-click="updateSubmit(user)">Update</button>
+                    </form>
               </div>
           </li>
       </div>

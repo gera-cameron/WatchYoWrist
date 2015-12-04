@@ -15,7 +15,7 @@ module.exports = {
     name : {type:'string'},
     password : {type:'string'},
     email : {type:'string'},
-    is_staff : {type:'boolean'}
+    is_staff : {type:'boolean', defaultsTo:false}
   },
   autoPK:false
 };
