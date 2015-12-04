@@ -8,6 +8,7 @@
  module.exports = {
      checkout : function(req,res){
        var allParams = req.allParams();
-       
+       sails.log.verbose(allParams);
+       return res.ok(allParams);
      }
 };
