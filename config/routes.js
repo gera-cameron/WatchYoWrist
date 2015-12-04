@@ -36,7 +36,8 @@ module.exports.routes = {
     'put /User/update/:id':'UserController.update',
     'get /Product': 'ProductController.find',
     'get /User': 'UserController.find',
-    'put /AnOrder': 'AnOrderController.checkout',
+    'get /AnOrder': 'AnOrderController.find',
+    'put /AnOrder/update/:id': 'AnOrderController.update',
     'delete /User/destroy/:id':'UserController.delete',
 
     /***************************************************************************

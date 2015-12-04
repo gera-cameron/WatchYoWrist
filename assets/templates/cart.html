@@ -1,23 +1,50 @@
-<div id="cart" class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="page-header">
-                <h1>CART</h1>
-            </div>
-            <div ng-controller="CartCtrl">
-                <ul class="list-group" ng-repeat="item in items">
-                    <b class="navStyle">{{item.name}}</b>
-                    <span class="badge" style="line-height:25px">$ {{item.price}}</span>
-                    <span class="glyphicon-remove-circle" style="color:red" ng-click="deleteItem(product)"></span>
+<div class="col-md-6 col-md-offset-3" ng-if="staff">
+  <div class="page-header">
+      <h2>Manage Orders</h2>
+  </div>
+    <li class="list-group-item clearfix"  ng-repeat="order in orders| toArray:false | filter:search">
+        <b class="navStyle ">{{order.id}}</b>
+        <div class="btn-group" role="group " style="float:right " aria-label="... ">
+            <button class="btn btn-info " type="button " ng-init="order.toggle " ng-click="order.toggle=! order.toggle " ng-if="!order.toggle1"><i class="glyphicon glyphicon-info-sign "></i></button>
+            <button class="btn btn-success " type="button "  ng-init="order.toggle1 " ng-click="order.toggle1=! order.toggle1 " ng-if="!order.toggle"><i class="glyphicon glyphicon-pencil "></i></button>
+            <button class="btn btn-danger "  ng-click="deleteOrder(order)" type="button "><i class="glyphicon glyphicon-trash "></i></button>
+
+        </div>
+        <div ng-show="order.toggle">
+            <div class="container " >
+                <ul>
+                    <li class="infoStyle " ><b>ID: </b><i>{{order.id}}</i></li>
+                    <li class="infoStyle " ><b>Products: </b><i>{{order.cur_product}}</i></li>
+                    <li class="infoStyle " ><b>User: </b><i>{{order.cur_user}}</i></li>
+                    <li class="infoStyle " ><b>Quantity: </b><i>{{order.quantity}}</i></li>
                 </ul>
-                <li class="list-group-item">Order total:
-                    <span class="badge" style="line-height:25px">$ {{total}}
-                </span>
-                </li>
-                <p></p>
-                <button class="btn btn-primary" href="#" ng-click="clear()">Submit</button>
-                <button class="btn btn-danger" ng-click="clear()">Clear</button>
             </div>
         </div>
-    </div>
+        <div ng-show="order.toggle1">
+              <form ng-controller="CartCtrl">
+                  <div class="form-group" style="color:#777">
+                      <label for="exampleInputName1">ProductId's Purchased:</label>
+                      <input type="integer" class="form-control" ng-model="order.cur_product">
+                  </div>
+                  <div class="form-group" style="color:#777">
+                      <label for="exampleInputAddress1">UserId of Purchaser:</label>
+                      <input type="integer" class="form-control" ng-model="order.cur_user">
+                  </div>
+                  <div class="form-group" style="color:#777">
+                      <label for="exampleInputEmail1">Quantity Ordered:</label>
+                      <input type="integer" class="form-control" ng-model="order.quantity">
+                  </div>
+                  <div class="form-group" style="color:#777">
+                      <label for="exampleInputPassword1">Date Purchased:</label>
+                      <input type="datetime" class="form-control" ng-model="order.date_bought">
+                  </div>
+                  <div class="checkbox" style="color:#777">
+                  <label>
+                      <input type="checkbox" ng-model="order.paid" value="false"> Paid? </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary" ng-click="updateSubmit(order)">Update</button>
+              </form>
+        </div>
+    </li>
 </div>

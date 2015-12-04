@@ -45,7 +45,7 @@
                             <ul class="dropdown-menu" aria-labelledby="dropdownmenu1">
                                 <li><a class="dropdown-item" href="#/about" data-toggle="dropdown">ABOUT</a></li>
                                 <li><a class="dropdown-item" href="#/products" data-toggle="dropdown">PRODUCTS</a></li>
-                                <li><a class="dropdown-item" ng-if="staff" href="" data-toggle="dropdown">MANAGE ORDERS</a></li>
+                                <li><a class="dropdown-item" ng-if="staff" href="#/cart" data-toggle="dropdown">MANAGE ORDERS</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -108,7 +108,7 @@
                             </a>
                         </li>
                         <li>
-                            <div class="dropdown" ng-if="loggedOn" style="padding:15px;">
+                            <div class="dropdown" ng-if="!staff" style="padding:15px;">
                                 <a class="dropdown-toggle" role=button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey">{{items.length}} <span class="glyphicon glyphicon-shopping-cart"></span></a>
                                 <ul class="dropdown-menu list-group" style="width:244px; padding:8px">
                                     <li class="dropdown-item list-group-item" ng-repeat="item in items | toArray:true">
