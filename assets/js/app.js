@@ -58,7 +58,7 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     };
 
     $scope.checkout = function () {
-        while (items.length > 0) {
+        while ($scope.items.length > 0) {
             var t = items.pop();
         }
     };
