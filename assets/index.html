@@ -112,8 +112,8 @@
                                 <a class="dropdown-toggle" role=button data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color:grey">{{items.length}} <span class="glyphicon glyphicon-shopping-cart"></span></a>
                                 <ul class="dropdown-menu list-group" style="width:244px; padding:8px">
                                     <li class="dropdown-item list-group-item" ng-repeat="item in items | toArray:true">
-                                        <b class="navStyle">{{item.name}}</b>
-                                        <span class="badge" style="line-height:25px; float:right">$ {{item.price}}</span><span class="glyphicon glyphicon-remove" style="color:red; float:right" ng-click="deleteItem(item)"></span>
+                                        <b class="navStyle"><span class="glyphicon glyphicon-remove" style="color:red; font-size:75%" ng-click="deleteItem(item)"></span> {{item.name}}</b>
+                                        <span class="badge" style="line-height:25px; float:right">$ {{item.price}}</span>
                                     </li>
                                     <li class="dropdown item list-group-item">Order total:
                                         <span class="badge" style="line-height:25px; float=right">$ {{total}}</span>
