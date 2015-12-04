@@ -51,7 +51,7 @@
                                         <li class="navStyle "><b>Description: </b><i>{{product.description}}</i></li>
                                         <li class="navStyle "><b>Price: $</b><i>{{product.price}}</i></li>
                                         <li class="navStyle" ng-if="staff"><b>Quantity: </b>{{product.stock}}
-                                            <div class="alert alert-danger" style="width:90%" role="alert" ng-show="{{product.stock}} <= 25">
+                                            <div class="alert alert-danger" style="width:90%" role="alert" ng-show="{{product.stock}} <= 5">
                                                 <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                                                 <span class="sr-only">Error:</span>Product is low on stock.
                                             </div>
