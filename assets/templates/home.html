@@ -42,7 +42,7 @@
                         </li>
                         <li class="list-group-item clearfix" ng-repeat="product in products | toArray:false | filter:search">
                             <b class="navStyle ">{{product.name}}</b>
-                            <div class="btn-group " role="group " style="float:right " aria-label="... ">
+                            <div class="btn-group" role="group " style="float:right " aria-label="... ">
                                 <button class="btn btn-info " type="button " ng-init="product.toggle " ng-click="product.toggle=! product.toggle "><i class="glyphicon glyphicon-info-sign "></i></button>
                                 <button class="btn btn-success " ng-if="!staff" ng-click="addItem(product) " type="button ">+<i class="glyphicon glyphicon-shopping-cart "></i></button>
                                 <button class="btn btn-warning " ng-if="staff" ng-click="" type="button "><i class="glyphicon glyphicon-plus "></i></button>
