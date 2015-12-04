@@ -59,6 +59,11 @@
                                                 <span class="sr-only">Error:</span>Product is low on stock.
                                                 <button class="btn btn-primary" disabled="disabled" style="float:right">Contact supplier</button>
                                             </div>
+                                            <div class="alert alert-danger" style="width:90%" role="alert" ng-show="checkUninterested(product)">
+                                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                                <span class="sr-only">Error:</span>Product is not interesting.
+                                                <button class="btn btn-primary" disabled="disabled" style="float:right">Delete</button>
+                                            </div>
                                         </li>
                                     </ul>
                                 </div>

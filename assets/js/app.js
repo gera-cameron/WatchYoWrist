@@ -76,6 +76,7 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     }]).
 controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $log, $http, $route) {
     $scope.products = {};
+    $scope.dates = [];
 
     $http({
         method: 'GET',
@@ -83,7 +84,26 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $
     }).success(function (response) {
         $log.debug(response);
         $scope.products = response;
+
+        //$log.debug($scope.products.length);
+        for (var i = 0; i < $scope.products.length; i++) {
+            var t = $scope.products[i].updatedAt.replace(/T/, ' ').replace(/\..+/, '').split(/[- :]/);
+            $scope.dates[i] = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
+            //$log.debug("dates[" + i + "] is " + $scope.dates[i]);
+        }
     });
+
+    $scope.checkUninterested = function (product) {
+        var t = product.updatedAt.replace(/T/, ' ').replace(/\..+/, '').split(/[- :]/);
+        var date = new Date(t[0], t[1] - 1, t[2], t[3], t[4], t[5]);
+
+        //$log.debug("checkInterested called for product " + product.id + ": current date is " + new Date() + ", date is " + date + ", difference is " + (new Date() - date));
+
+        if ((new Date() - date) >= (1000 * 60 * 60 * 24 * 30))
+            return true;
+        else
+            return false;
+    };
 
     $scope.sortPriceLowHigh = function () {
         $scope.products.sort(function (a, b) {
@@ -101,7 +121,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', function ($scope, $
         });
     };
 
-            }]).controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
+}]).controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
 
     }]).controller('CartCtrl', ['$scope', '$log', '$http', '$window', '$route', function ($scope, $log, $http, $window, $route) {
     $scope.orders = {};
