@@ -27,6 +27,7 @@ config(['$routeProvider', function ($routeProvider) {
 }]).
 controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
     $scope.products = {};
+    var userCookie = $cookies.getObject('user');
     $scope.items = [];
     $scope.total = 0;
     $scope.enabled = false;
@@ -59,11 +60,20 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
 
     $scope.checkout = function () {
         while ($scope.items.length > 0) {
-            var t = items.pop();
-        }
+            var t = $scope.items.pop();
+            $http({
+                method: 'POST',
+                url: '/AnOrder/create',
+                params: {
+                    cur_product: t.id,
+                    cur_user: userCookie.id,
+                    paid: true,
+                    quantity: 1,
+                }
+        });
+      }
     };
 
-    var userCookie = $cookies.getObject('user');
     $log.info(userCookie);
     $scope.loggedOn = false;
     $scope.staff = false;
