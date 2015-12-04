@@ -1,30 +1,30 @@
 <div id="user" class="container">
-    <div class="row" ng-controller="UserCtrl">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="page-header">
-                <h1>YOUR ACCOUNT</h1>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h1>USER</h1>
+        </div>
+        <form ng-controller="UserCtrl">
+            <p>Update your information in the fields below. Complete all fields.</p>
+            <div class="form-group" style="color:whitesmoke">
+                <label for="exampleInputName1">Name</label>
+                <input type="text" class="form-control" id="exampleInputName1" ng-model="userObject.name">
             </div>
-            <form>
-                <p>Update your information in the fields below. Complete all fields.</p>
-                <div class="form-group" style="color:whitesmoke">
-                    <label for="exampleInputName1">Name</label>
-                    <input type="text" class="form-control" id="exampleInputName1" ng-model="userObject.name">
-                </div>
-                <div class="form-group" style="color:whitesmoke">
-                    <label for="exampleInputAddress1">Address</label>
-                    <input type="address" class="form-control" id="exampleInputAddress1" ng-model="userObject.address">
-                </div>
-                <div class="form-group" style="color:whitesmoke">
-                    <label for="exampleInputEmail1">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" ng-model="userObject.email">
-                </div>
-                <div class="form-group" style="color:whitesmoke">
-                    <label for="exampleInputPassword1">Password</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1" ng-model="userObject.password">
-                </div>
-                <button type="submit" class="btn btn-primary" ng-click="updateSubmit(userObject)">Update</button>
-                <button type="submit" class="btn btn-danger" ng-click="deleteAccount(userObject)">Delete Account</button>
-            </form>
+            <div class="form-group" style="color:whitesmoke">
+                <label for="exampleInputAddress1">Address</label>
+                <input type="address" class="form-control" id="exampleInputAddress1" ng-model="userObject.address">
+            </div>
+            <div class="form-group" style="color:whitesmoke">
+                <label for="exampleInputEmail1">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" ng-model="userObject.email">
+            </div>
+            <div class="form-group" style="color:whitesmoke">
+                <label for="exampleInputPassword1">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" ng-model="userObject.password">
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="updateSubmit(userObject)">Update</button>
+            <button type="submit" class="btn btn-danger" ng-click="deleteAccount(userObject)">Delete Account</button>
+        </form>
     </div>
       <div class="col-md-6 col-md-offset-3">
         <div class="page-header">
@@ -32,6 +32,19 @@
         </div>
           <li class="list-group-item clearfix" ng-if="staff" ng-repeat="user in users| toArray:false | filter:search">
               <b class="navStyle ">{{user.name}}</b>
+              <div class="btn-group" role="group " style="float:right " aria-label="... ">
+                  <button class="btn btn-info " type="button " ng-init="user.toggle " ng-click="user.toggle=! user.toggle "><i class="glyphicon glyphicon-info-sign "></i></button>
+                  <button class="btn btn-success " ng-click="" type="button "><i class="glyphicon glyphicon-pencil "></i></button>
+                  <button class="btn btn-danger "  ng-click="deleteAccount(user)" type="button "><i class="glyphicon glyphicon-trash "></i></button>
+
+              </div>
+              <div ng-show="user.toggle">
+                  <div class="container " >
+                      <ul>
+                          <li class="infoStyle " ><b>Address: </b><i>{{user.address}}</i></li>
+                      </ul>
+                  </div>
+              </div>
           </li>
       </div>
   </div>

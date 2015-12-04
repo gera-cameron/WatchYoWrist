@@ -39,6 +39,11 @@ a,
     color: #777;
     font-family: 'Raleway', sans-serif;
 }
+.infoStyle {
+    color: #777;
+    font-size: medium;
+    font-family: 'Raleway', sans-serif;
+}
 
 p {
     color: whitesmoke;
