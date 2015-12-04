@@ -154,6 +154,30 @@ controller('UserCtrl', ['$scope', '$log', '$http', '$cookies', '$window', '$rout
             // or server returns response with an error status.
         });
     };
+    $scope.users = {};
+
+        $http({
+            method: 'GET',
+            url: '/User',
+        }).success(function (response) {
+            $log.debug(response);
+            $scope.users = response;
+        });
+
+
+    $scope.sortPriceLowHigh = function () {
+        $scope.users.sort(function (a, b) {
+            return parseFloat(a.price) - parseFloat(b.price);
+        });
+    };
+    $scope.sortPriceHighLow = function () {
+        $scope.users.sort(function (a, b) {
+            return parseFloat(b.price) - parseFloat(a.price);
+        });
+    };
+    $scope.reset = function () {
+        $route.reload();
+    };
 }]).controller('LoginCtrl', ['$scope', '$log', '$http', '$cookies', '$window', function ($scope, $log, $http, $cookies, $window) {
     $scope.message = false;
     $scope.userData = {};

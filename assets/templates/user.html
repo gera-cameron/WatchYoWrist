@@ -24,8 +24,15 @@
             </div>
             <button type="submit" class="btn btn-primary" ng-click="updateSubmit(userObject)">Update</button>
             <button type="submit" class="btn btn-danger" ng-click="deleteAccount(userObject)">Delete Account</button>
-
         </form>
+    </div>
+      <div class="col-md-6 col-md-offset-3">
+        <div class="page-header">
+            <h2>Manage Users</h2>
+        </div>
+          <li class="list-group-item clearfix" ng-if="staff" ng-repeat="user in users| toArray:false | filter:search">
+              <b class="navStyle ">{{user.name}}</b>
+          </li>
       </div>
   </div>
 </div>

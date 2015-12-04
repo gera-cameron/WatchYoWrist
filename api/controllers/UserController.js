@@ -32,5 +32,23 @@ module.exports = {
       sails.log.verbose('The record has been deleted', sentParamsObj);
       return res.ok(sentParamsObj);
     });
-  }
+  },
+
+  find: function(req,res){
+		sails.log.verbose("Print this");
+		var allParams = req.allParams();
+		var usersDetails = allParams.description;
+		var userName = allParams.name;
+		sails.log.verbose(userName);
+		User.find()
+		.then(function(user){
+			sails.log.verbose("user is", user);
+			while(user){
+						return res.send(user);
+			}
+		})
+		.catch(function(err){
+			return res.serverError();
+		});
+	}
 };
