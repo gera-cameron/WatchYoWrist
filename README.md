@@ -30,6 +30,16 @@ a [Sails](http://sailsjs.org) application
 - Created JavaScript functions to add functionality to interface
 - Miscellaneous testing
 
+### Major Challenges
+Generally, the MySQL portion was simple.  It took time initially to get the table structure set and to relate the tables together, but once they were correct they became easy to manage.  It took a bit of research to discover MySQL functions like timestamps and auto-increment for attributes that benefited from using them.
+
+Both group members had some previous experience with web development, with Kyle's being more front-end oriented and Cameron's being more back-end.  Major challenges arose with linking the local database to the interface, but eventually we managed to create correct models and controllers so that they could interact with the interface.  AngularJS was used in many cases to populate interface items such as lists due to its simplicity, though there was an initial learning curve.
+
+Ultimately, most of the challenges we faced were with connecting the interface components with the database - things like adding users and editing product information.
+
+### Programming Practices
+Both group members had prior experience with basic HTML, CSS, and JavaScript.  The initial HTML/CSS for the website came from Kyle's personal website.  Sails uses a Model/View/Controller architecture, which Cameron had prior experience with.  After an initial learning curve, both group members became acquainted with AngularJS which aided in that M/V/C architecture.
+
 ### To run:
 Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
 
