@@ -18,7 +18,7 @@ Being a sails application, sails must be installed along with sails-related comp
 - templates/ again contains each .html file for page views.  Each of these pages is linked to assets/js/app.js through ng-controller in the html.
 
 ### Usage:
-- ###### Users:
+###### Users:
 - From the home page, a user is unable to add items to their cart.  They are able to register an account and view the product listing, and may search the products and sort them by price.
   - An info button can be clicked to see the product's description and price.
 - Once a user registers, they are able to sign in and add items to their cart located in the navbar.  Items may be deleted, and by checking out an order is made containing the products in the cart.  The cart contains an order total.
@@ -26,7 +26,7 @@ Being a sails application, sails must be installed along with sails-related comp
   - Products with a stock of 0 are disabled, meaning they are unable to be added to a cart.
 - A user is also able to navigate to a settings page through the navbar and edit any of their account information (name, address, etc.)
 
-- ###### Staff:
+###### Staff:
 - Staff members view pages differently than guests and non-staff.
 - The main products page will show more information about the product through the info button than other users will
   - A product's stock is shown
