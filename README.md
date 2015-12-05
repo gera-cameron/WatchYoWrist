@@ -15,6 +15,7 @@ a [Sails](http://sailsjs.org) application
 - AngularJS programming to populate interface with database information
 - Created JavaScript functions to add functionality to interface
 - Wrote JS code to handle adding/removing/altering database entries
+- Miscellaneous testing
 
 ###### Kyle Brost:
 - Contributed to initial MySQL database, including:
@@ -27,6 +28,7 @@ a [Sails](http://sailsjs.org) application
 - Wrote HTML to create interface components
 - AngularJS programming to populate interface with database information
 - Created JavaScript functions to add functionality to interface
+- Miscellaneous testing
 
 ### To run:
 Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
