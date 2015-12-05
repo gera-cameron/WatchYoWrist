@@ -4,6 +4,30 @@
 ## CIS4301 Project
 a [Sails](http://sailsjs.org) application
 
+### Member Contributions:
+###### Cameron Gera:
+- Contributed to initial MySQL database, including:
+  - initial tables, sample data
+  - key relations
+  - triggers
+- Worked to connect front-end interface with database using models and controllers
+- Wrote HTML to create interface components
+- AngularJS programming to populate interface with database information
+- Created JavaScript functions to add functionality to interface
+- Wrote JS code to handle adding/removing/altering database entries
+
+###### Kyle Brost:
+- Contributed to initial MySQL database, including:
+  - initial tables, sample data
+  - key relations
+  - triggers
+- Initial HTML template
+  - navigation bar, background, bootstrap components
+- Initial CSS stylesheet
+- Wrote HTML to create interface components
+- AngularJS programming to populate interface with database information
+- Created JavaScript functions to add functionality to interface
+
 ### To run:
 Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
 
