@@ -9,6 +9,7 @@ a [Sails](http://sailsjs.org) application
 2. Run `mysql -u root`
 3. Create database using `create database onlinestore;` and switch to it with `use onlinestore`
 4. Then use the following code found in Project.sql
+
     ```
     # order table
     CREATE TABLE AnOrder (
@@ -59,14 +60,18 @@ a [Sails](http://sailsjs.org) application
     	PRIMARY KEY (id)
     );
     ```
+    
 5. Set up auto-increment for id:
+
     ```
     ALTER TABLE AnOrder AUTO_INCREMENT = 10000;
     ALTER TABLE Product AUTO_INCREMENT = 20000;
     ALTER TABLE Supplier AUTO_INCREMENT = 30000;
     ALTER TABLE User AUTO_INCREMENT = 40000;
     ```
+
 6. Now add some test information:
+
     ```
     # contains orders placed
     INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20000, 40000, TRUE, 1);
@@ -101,7 +106,9 @@ a [Sails](http://sailsjs.org) application
     INSERT INTO User (address, name, password, email, is_staff) VALUES ('567 4th St', 'George Washington', 'washington456', 'gwash@email.com', FALSE);
     INSERT INTO User (address, name, password, email, is_staff) VALUES ('953 9th Rd', 'Teddy Roosevelt', 'teddyteddy2', 'teddyr@email.com', FALSE);
     ```
+
 7. Add the following triggers to update the information:
+
     ```
     /*
     	prevent negative quantity
@@ -191,7 +198,9 @@ a [Sails](http://sailsjs.org) application
     END;
     //
     ```
+
 8. Change the delimiter to the semicolon with `DELIMITER ;`
+
 ### Run the sails online store application:
 1. Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
 2. Clone git repository and change to that directory.
