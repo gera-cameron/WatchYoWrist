@@ -144,18 +144,18 @@ INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20007, 40002
 INSERT INTO AnOrder (cur_product, cur_user, paid, quantity) VALUES (20010, 40003, TRUE, 3);
 
 # contains all products offered
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 1', 5.00, 100, '1 month basic', TRUE, 30000);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 2', 14.00, 100, '3 month basic', TRUE, 30000);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 3', 28.00, 100, '6 month basic', TRUE, 30000);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 4', 55.00, 100, '12 month basic', TRUE, 30000);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 1', 10.00, 50, '1 month silver', TRUE, 30001);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 2', 28.00, 50, '3 month silver', TRUE, 30001);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 3', 50.00, 50, '6 month silver', TRUE, 30001);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 4', 99.00, 50, '12 month silver', TRUE, 30001);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 1', 20.00, 25, '1 month gold', TRUE, 30002);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 2', 58.00, 25, '3 month gold', TRUE, 30002);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 3', 110.00, 25, '6 month gold', TRUE, 30002);
-INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 4', 210.00, 25, '12 month gold', TRUE, 30002);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 1', 5.00, 100, 'This is a 1 month subscription to our basic model of watch bands. This supplier is Apple.', TRUE, 30000);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 2', 14.00, 100, 'This is a 3 month subscription to our basic model of watch bands. This supplier is Apple.', TRUE, 30000);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 3', 28.00, 100, 'This is a 6 month subscription to our basic model of watch bands. This supplier is Apple.', TRUE, 30000);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Basic 4', 55.00, 100, 'This is a 12 month subscription to our basic model of watch bands. This supplier is Apple.', TRUE, 30000);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 1', 10.00, 50, 'This is a 1 month subscription to our silver model of watch bands. This supplier is Fossil.', TRUE, 30001);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 2', 28.00, 50, 'This is a 3 month subscription to our silver model of watch bands. This supplier is Fossil.', TRUE, 30001);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 3', 50.00, 50, 'This is a 6 month subscription to our silver model of watch bands. This supplier is Fossil.', TRUE, 30001);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Silver 4', 99.00, 50, 'This is a 12 month subscription to our silver model of watch bands. This supplier is Fossil.', TRUE, 30001);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 1', 20.00, 25, 'This is a 1 month subscription to our gold model of watch bands. This supplier is Samsung.', TRUE, 30002);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 2', 58.00, 25, 'This is a 3 month subscription to our gold model of watch bands. This supplier is Samsung.', TRUE, 30002);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 3', 110.00, 25, 'This is a 6 month subscription to our gold model of watch bands. This supplier is Samsung.', TRUE, 30002);
+INSERT INTO Product (name, price, stock, description, active, supplier) VALUES ('Gold 4', 210.00, 25, 'This is a 12 month subscription to our gold model of watch bands. This supplier is Samsung.', TRUE, 30002);
 
 # contains all suppliers
 INSERT INTO Supplier (name) VALUES ('Apple');

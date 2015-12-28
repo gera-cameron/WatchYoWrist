@@ -31,6 +31,10 @@ module.exports = {
     stock : {type:'integer'},
     active : {type: 'boolean'},
     description : {type:'text'},
+    // order:{
+    //   collection:'AnOrder',
+    //   via: 'cur_product'
+    // },
     supplier: {type:'integer'}
   }
 };

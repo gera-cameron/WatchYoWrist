@@ -29,7 +29,8 @@ module.exports = {
   attributes: {
     id : {type:'integer', primaryKey: true, unique: true},
     date_bought : {type:'datetime'},
-    cur_product : {type:'INT'},
+    cur_product : {
+      type: 'integer'},
     cur_user : {type:'INT'},
     paid : {type:'boolean'},
     quantity : {type:'INT'},
