@@ -70,7 +70,7 @@ Being a sails application, sails must be installed along with sails-related comp
   - Another warning message shows when a product has not been purchased within the last month, with a button to delete the product
 - In addition, a field is shown below the product listing area to add products to the database
 - Buttons are shows only to staff to edit a product's information and to delete a product
-- A 'Manage Orders' button appears in the navbar for staff onle
+- A 'Manage Orders' button appears in the navbar for staff only
   - This page allows staff to view, edit, and delete orders from the database.
 - Additionally, staff see the settings page differently
   - Staff members not only can update their own information, but they can view, edit, and delete information for any user within the database.  Users can even be made as staff.

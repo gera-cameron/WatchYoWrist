@@ -260,7 +260,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
         }).then(function successCallback(response) {
             $cookies.remove('user');
             $cookies.putObject('user', response.data[0]);
-            $window.location.href = "/#/user";
+            $window.location.href = "/#/";
             $log.debug(response.data[0]);
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
@@ -282,7 +282,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             // }
         }).then(function successCallback(response) {
             $cookies.remove('user');
-            $window.location.href = "/";
+            $window.location.href = "/#/";
             $scope.$parent.loggedOn = false;
             $log.debug(response.data);
             $route.reload();
@@ -349,7 +349,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             }
         }).then(function successCallback(response) {
             $log.debug(response);
-            $window.location.href = "/";
+            $window.location.href = "/#/";
             $route.reload();
             $window.alert = "Please sign in now.";
         }, function errorCallback(response) {
@@ -374,7 +374,7 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
             }
         }).then(function successCallback(response) {
             $log.debug(response);
-            $window.location.href = "/";
+            $window.location.href = "/#/";
             $route.reload();
         }, function errorCallback(response) {
             // called asynchronously if an error occurs
