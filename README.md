@@ -4,7 +4,7 @@
 a [Sails](http://sailsjs.org) application
 
 ## To run:
-### Create database using mysql:
+### Create Database Using MySQL:
 1. Install [MySQL](http://dev.mysql.com/downloads/mysql/).
 2. Run `mysql -u root`
 3. Create database using `create database onlinestore;` and switch to it with `use onlinestore`
@@ -60,7 +60,7 @@ a [Sails](http://sailsjs.org) application
     	PRIMARY KEY (id)
     );
     ```
-    
+
 5. Set up auto-increment for id:
 
     ```
@@ -201,7 +201,8 @@ a [Sails](http://sailsjs.org) application
 
 8. Change the delimiter to the semicolon with `DELIMITER ;`
 
-### Run the sails online store application:
+### Run the Sails Online Store Application:
+
 1. Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
 2. Clone git repository and change to that directory.
 3. Then please run `npm install` to install all the dependencies.
@@ -209,6 +210,7 @@ a [Sails](http://sailsjs.org) application
 5. Run `sails lift` and you have yourself an online store. Make an account and enjoy your new watch band subscription.
 
 ### Member Contributions:
+
 ###### Cameron Gera:
 - Contributed to initial MySQL database, including:
   - initial tables, sample data
