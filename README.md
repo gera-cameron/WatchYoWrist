@@ -5,8 +5,8 @@ a [Sails](http://sailsjs.org) application
 
 ### To run:
 1. Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
-2. After installation of sails, please run 'npm install' to install all the dependencies.
-3. Then from terminal change to your assets folder and 'npm install -g bower'. Then run 'bower init' and 'bower install'.
+2. After installation of sails, please run `npm install` to install all the dependencies.
+3. Then from terminal change to your assets folder and `npm install -g bower`. Then run `bower init` and `bower install`.
 
 ### Member Contributions:
 ###### Cameron Gera:
