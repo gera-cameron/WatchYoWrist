@@ -3,6 +3,11 @@
 # Watch-Yo-Wrist
 a [Sails](http://sailsjs.org) application
 
+### To run:
+1. Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
+2. After installation of sails, please run 'npm install' to install all the dependencies.
+3. Then from terminal change to your assets folder and 'npm install -g bower'. Then run 'bower init' and 'bower install'.
+
 ### Member Contributions:
 ###### Cameron Gera:
 - Contributed to initial MySQL database, including:
@@ -38,9 +43,6 @@ Ultimately, most of the challenges we faced were with connecting the interface c
 
 ### Programming Practices
 Both group members had prior experience with basic HTML, CSS, and JavaScript.  The initial HTML/CSS for the website came from Kyle's personal website.  Sails uses a Model/View/Controller architecture, which Cameron had prior experience with.  After an initial learning curve, both group members became acquainted with AngularJS which aided in that M/V/C architecture.
-
-### To run:
-Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
 
 ### File structure:
 - Database structure is in Project.sql
