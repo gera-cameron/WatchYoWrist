@@ -3,7 +3,7 @@
 # Watch-Yo-Wrist
 a [Sails](http://sailsjs.org) application
 
-### To run:
+## To run:
 1. Being a sails application, sails must be installed along with sails-related components.  Visit [here](http://sailsjs.org/get-started) to learn more and to be able to launch the application yourself.
 2. After installation of sails, please run `npm install` to install all the dependencies.
 3. Then from terminal change to your assets folder and `npm install -g bower`. Then run `bower init` and `bower install`.
@@ -42,13 +42,13 @@ Both group members had some previous experience with web development, with Kyle'
 Ultimately, most of the challenges we faced were with connecting the interface components with the database - things like adding users and editing product information.
 
 ### Programming Practices
-Both group members had prior experience with basic HTML, CSS, and JavaScript.  The initial HTML/CSS for the website came from Kyle's personal website.  Sails uses a Model/View/Controller architecture, which Cameron had prior experience with.  After an initial learning curve, both group members became acquainted with AngularJS which aided in that M/V/C architecture.
+Both group members had prior experience with basic HTML, CSS, and JavaScript.  The initial HTML/CSS for the website came from Kyle's personal website.  Sails uses a Model View Controller(MVC) architecture, which Cameron had prior experience with.  After an initial learning curve, both group members became acquainted with AngularJS which aided in that MVC architecture.
 
 ### File structure:
 - Database structure is in Project.sql
 - Controllers for database querying are in api/controllers/
 - Database models are in api/models/
-- assets/js/app.js contains more controllers and querying as well as angularjs functions
+- assets/js/app.js contains more controllers and querying as well as AngularJS functions
 - templates/ contains the .html files for each page
 - assets/styles/style.css is the main styling file for the website
 - assets/index.html is the main page as viewed by a user; it contains a shell which is populated with other html files through ng-view.  It contains the <head> tag and the navigation bar.
