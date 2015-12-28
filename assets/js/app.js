@@ -70,8 +70,8 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
                     paid: true,
                     quantity: 1,
                 }
-        });
-      }
+            });
+        }
     };
 
     $log.info(userCookie);
@@ -92,6 +92,7 @@ controller('MainCtrl', ['$scope', '$log', '$http', '$cookies', '$window', functi
     }]).
 controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function ($scope, $log, $http, $route, $window) {
     $scope.products = {};
+    $scope.search = "";
 
     $http({
         method: 'GET',
@@ -169,9 +170,11 @@ controller('HomeCtrl', ['$scope', '$log', '$http', '$route', '$window', function
         });
     };
     $scope.reset = function () {
+        /*document.getElementById("srch-term").value = "";
         $scope.products.sort(function (a, b) {
-            return parseFloat(b.id) - parseFloat(a.id);
-        });
+            return parseFloat(a.id) - parseFloat(b.id);
+        });*/
+        $route.reload();
     };
 
 }]).controller('AboutCtrl', ['$scope', '$log', '$http', function ($scope, $log, $http) {
