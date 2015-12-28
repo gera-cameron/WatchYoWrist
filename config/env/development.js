@@ -20,6 +20,17 @@ module.exports = {
   // models: {
   //   connection: 'someMongodbServer'
   // }
+
+  connections: {
+    mysql: {
+      module    : 'sails-mysql',
+      host      : 'localhost',
+      port      : 3306,
+      user      : 'root',
+      database  : 'CISProject'
+    },
+  },
+  
   tokenSecret: 'qhAO2iCc8daIaU3w%2L*^&#Hmi'
 
 };
