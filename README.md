@@ -241,7 +241,7 @@ Generally, the MySQL portion was simple.  It took time initially to get the tabl
 
 Both group members had some previous experience with web development, with Kyle's being more front-end oriented and Cameron's being more back-end.  Major challenges arose with linking the local database to the interface, but eventually we managed to create correct models and controllers so that they could interact with the interface.  AngularJS was used in many cases to populate interface items such as lists due to its simplicity, though there was an initial learning curve.
 
-Ultimately, most of the challenges we faced were with connecting the interface components with the database - things like adding users and editing product information.
+Ultimately, most of the challenges we faced were with connecting the interface components with the database - things like adding users and editing product information. The two week time limit was also a challenge, but as a team, Kyle and Cameron spent a lot of time and learned a lot from the experience.
 
 ### Programming Practices
 Both group members had prior experience with basic HTML, CSS, and JavaScript.  The initial HTML/CSS for the website came from Kyle's personal website.  Sails uses a Model View Controller(MVC) architecture, which Cameron had prior experience with.  After an initial learning curve, both group members became acquainted with AngularJS which aided in that MVC architecture.
